@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>思科基础命令集</title>
+      <link href="2020/11/16/%E6%80%9D%E7%A7%91%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E9%9B%86/"/>
+      <url>2020/11/16/%E6%80%9D%E7%A7%91%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4%E9%9B%86/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、命令行等级"><a href="#一、命令行等级" class="headerlink" title="一、命令行等级"></a>一、命令行等级</h2><p><strong>Router&gt;</strong> <em>只能看部分配置，不能操作修改配置</em><br><strong>Router#</strong> <em>全部模式，能看所有配置，ping telnet 重启 回复出产设置 ，不能配置不能操作</em><br><strong>Router(config)#</strong> <em>全局模式，可以做任何的配置修改，不能查看配置</em></p><h2 id="二、配置IP地址"><a href="#二、配置IP地址" class="headerlink" title="二、配置IP地址"></a>二、配置IP地址</h2><p><strong>Router(config)#interface ethernet 0/0</strong>  <em>//先进入接口模式</em><br><strong>Router(config-if)#ip address 192.168.10.1 255.255.255.0</strong> <em>//配置IP地址和子网掩码</em><br><strong>Router(config-if)#no shutdown</strong> <em>//启动该接口-==一定要启动 #F44336==（先启动后配置，或者先配置后启动都可以）</em></p><h2 id="查看IP地址"><a href="#查看IP地址" class="headerlink" title="查看IP地址"></a>查看IP地址</h2><p><strong>Router(config)#do show running-config int e0/0</strong>  <em>//在非特权模式下查看e0/0口的配置需要加do</em><br><strong>Router#show running-config int e0/0</strong>  <em>//在特权模式直接查看</em><br><strong>Router(config)#do show running-config</strong>   <em>//查看所有接口的配置</em></p><h2 id="更改主机名称"><a href="#更改主机名称" class="headerlink" title="更改主机名称"></a>更改主机名称</h2><p><strong>Router(config)#hostname RT1</strong>    <em>//修改路由器主机名称为RT1</em><br><strong>RT1(config)#</strong>            <em>//已被修改为RT1</em></p><h2 id="给console配密码"><a href="#给console配密码" class="headerlink" title="给console配密码"></a>给console配密码</h2><p><strong>RT2(config)#line console 0</strong><br><strong>RT2(config-line)#password 123456</strong>    <em>//给console线配置密码</em></p><h2 id="配置telnet密码"><a href="#配置telnet密码" class="headerlink" title="配置telnet密码"></a>配置telnet密码</h2><p><strong>RT2(config)#line vty 0 4</strong>                                   <em>//表示下面是对VTY的0到4号端口（即0号、1号、2号、3号、4号）进行配置</em><br><strong>RT2(config-line)#password cisco</strong>                  <em>//配置telnet密码</em><br><strong>RT2(config-line)#transport input telnet</strong>          <em>//开启telent</em><br><strong>RT2(config-line)#exit</strong>                                    <em>//返回全局模式</em><br><strong>RT2(config)#enable password 1234@abcd</strong>  <em>//配置enable密码</em></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网络设备 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 网络设备 </tag>
+            
+            <tag> 思科 </tag>
+            
+            <tag> 交换机 </tag>
+            
+            <tag> 路由器 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>wordpress解决访问速度慢</title>
       <link href="2020/11/10/workpress%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6%E6%85%A2/"/>
       <url>2020/11/10/workpress%E8%AE%BF%E9%97%AE%E9%80%9F%E5%BA%A6%E6%85%A2/</url>
