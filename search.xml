@@ -4,6 +4,92 @@
   
     
     <entry>
+      <title>神马基本</title>
+      <link href="2020/11/25/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/%E7%A5%9E%E9%A9%AC%E5%9F%BA%E6%9C%AC/"/>
+      <url>2020/11/25/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/%E7%A5%9E%E9%A9%AC%E5%9F%BA%E6%9C%AC/</url>
+      
+        <content type="html"><![CDATA[<h2 id="实验拓扑图"><a href="#实验拓扑图" class="headerlink" title="实验拓扑图"></a>实验拓扑图</h2><p><img src="https://storage.tonlx.cn/images/2020/11/25/20201125135237.png"></p><h2 id="设备IP地址"><a href="#设备IP地址" class="headerlink" title="设备IP地址"></a>设备IP地址</h2><p><img src="https://storage.tonlx.cn/images/2020/11/25/20201125135349.png"></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>安装archlinux</title>
+      <link href="2020/11/24/Linux/%E5%AE%89%E8%A3%85archlinux/"/>
+      <url>2020/11/24/Linux/%E5%AE%89%E8%A3%85archlinux/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux必须掌握的命令</title>
+      <link href="2020/11/24/Linux/Linux%E5%BF%85%E9%A1%BB%E6%8E%8C%E6%8F%A1%E7%9A%84%E5%91%BD%E4%BB%A4/"/>
+      <url>2020/11/24/Linux/Linux%E5%BF%85%E9%A1%BB%E6%8E%8C%E6%8F%A1%E7%9A%84%E5%91%BD%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 命令 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>神州思科基础命令-对照</title>
+      <link href="2020/11/18/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/%E7%A5%9E%E5%B7%9E%E6%80%9D%E7%A7%91%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-%E5%AF%B9%E7%85%A7/"/>
+      <url>2020/11/18/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/%E7%A5%9E%E5%B7%9E%E6%80%9D%E7%A7%91%E5%9F%BA%E7%A1%80%E5%91%BD%E4%BB%A4-%E5%AF%B9%E7%85%A7/</url>
+      
+        <content type="html"><![CDATA[<h1 id="神州网络基本命令"><a href="#神州网络基本命令" class="headerlink" title="神州网络基本命令"></a>神州网络基本命令</h1><h2 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h2><p>—思科<br>Router&gt;<br>Router#<br>Router(config)#<br>—神州<br>Router&gt;<br>Router#<br>Router(config)#<br><em>==思科与神州进入这三个模式都一样 #F44336==</em></p><h2 id="退出操作"><a href="#退出操作" class="headerlink" title="退出操作"></a>退出操作</h2><p>—思科<br>end     //推出到全局模式<br>exit     //上一级<br>disable   //回到用户模式<br>*==当处于用户模式或者特权模式下不能输入exit，否则会断开 #F44336==*<br>—神州<br><strong>同上</strong></p><h2 id="设置主机名"><a href="#设置主机名" class="headerlink" title="设置主机名"></a>设置主机名</h2><p>—思科<br>Router(config)#hostname R4<br>R4(config)#<br>—神州<br>Router(config)#hostname R4<br>R4(config)#</p><h2 id="设置密码"><a href="#设置密码" class="headerlink" title="设置密码"></a>设置密码</h2><p>—思科<br>1、设置console密码<br>R4(config)#line console 0<br>R4(config-line)#password 1234@abcd<br>R4(config-line)#login<br>2、设置enable(特权)密码<br>R4(config)#enable password 1234@abcd<br>R4(config)#enable secret 1234@abcd<br>==第一条表示 普通密码<br>第二天表示 加密密码<br>如果设置了两个只会显示第二个，enable secret 优先级要高 #F44336==<br>3、设置telnet密码<br>R4(config)#line vty 0 4<br>R4(config-line)#transport input telnet<br>R4(config-line)#password 1234@abcd<br>R4(config-line)#login<br>—神州</p><h2 id="保存运行配置到启动配置"><a href="#保存运行配置到启动配置" class="headerlink" title="保存运行配置到启动配置"></a>保存运行配置到启动配置</h2><p> ==<em>修改的配置，如果不保存只会存到运行内存中，如果重启设备参数依然存在</em> #F44336==<br>—思科<br>方法一<br>Router#write<br>方法二<br>Router#copy running-config startup-config<br>—神州</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 网络设备 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 网络设备 </tag>
+            
+            <tag> 思科 </tag>
+            
+            <tag> 交换机 </tag>
+            
+            <tag> 路由器 </tag>
+            
+            <tag> 神州 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SecureCRT各种版本下载</title>
       <link href="2020/11/16/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/SecureCRT%E5%90%84%E7%A7%8D%E7%89%88%E6%9C%AC%E4%B8%8B%E8%BD%BD/"/>
       <url>2020/11/16/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/SecureCRT%E5%90%84%E7%A7%8D%E7%89%88%E6%9C%AC%E4%B8%8B%E8%BD%BD/</url>
