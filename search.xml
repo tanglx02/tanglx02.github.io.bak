@@ -4,6 +4,124 @@
   
     
     <entry>
+      <title>xshell快捷键绿化版</title>
+      <link href="2020/12/04/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/xshell%E5%BF%AB%E6%8D%B7%E9%94%AE%E7%BB%BF%E5%8C%96%E7%89%88/"/>
+      <url>2020/12/04/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/xshell%E5%BF%AB%E6%8D%B7%E9%94%AE%E7%BB%BF%E5%8C%96%E7%89%88/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、介绍"><a href="#一、介绍" class="headerlink" title="一、介绍"></a>一、介绍</h2><p>Xshell 是一个强大的安全终端模拟软件，xshell具有非常强大的自定义功能，经过修改后可以使运维过程变得而外轻松。<br>修改部分：<br>1、去除激活<br>2、添加配色<br>3、添加快捷键<br>额外添加上去的快捷键，熟练使用后你的xshell将行云流水，当然你也可以自己添加喜欢的快捷键<br>位置 (工具→热键对应)</p><h3 id="二、快捷键"><a href="#二、快捷键" class="headerlink" title="二、快捷键"></a>二、快捷键</h3><p><strong>AIt+B 开启简易模式    简记 (B: briefness—简易 )<br>AIt+C 断开连接           简记 (C: cut—释放)<br>Ctrl+AIt+C 关闭这个会话框          简记 (C: cut—释放)<br>Alt+N  复制当前会话<br>Crtl+Alt+N 新建一个会话 简记  (N:new)<br>AIt+D 转到地址栏       简记 (D: 地址)<br>AIt+Q 或者Alt+Enter  简记 (Q:全屏)<br>Alt+G 会话管理器        简记 (G:管理)<br>Alt+M 重命名               简记 (M:命名)<br>Alt+s 重新连接<br>Ctrl+Alt+s 重新连接所有<br>Alt+H 上一个会话        简记 (H:vim中的←)<br>Alt+L  下一个会话        简记 (L:vim中的→)<br>Alt+J   向下滚动           简记 (J:vim中的↓)<br>Alt+k  向上滚动            简记 (K:vim中的↑)</strong></p><h2 id="三、基本演示"><a href="#三、基本演示" class="headerlink" title="三、基本演示"></a>三、基本演示</h2><p><img src="https://storage.tonlx.cn/images/2020/12/04/xhell_Key.gif"></p><h2 id="四、下载链接"><a href="#四、下载链接" class="headerlink" title="四、下载链接"></a>四、下载链接</h2><p><a href="https://wws.lanzous.com/i3tY3j1xnyf">https://wws.lanzous.com/i3tY3j1xnyf</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 常用工具 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 工具 </tag>
+            
+            <tag> 运维 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>centos7开启samba服务</title>
+      <link href="2020/12/04/Linux/%E6%9C%8D%E5%8A%A1/centos7%E5%BC%80%E5%90%AFsamba%E6%9C%8D%E5%8A%A1/"/>
+      <url>2020/12/04/Linux/%E6%9C%8D%E5%8A%A1/centos7%E5%BC%80%E5%90%AFsamba%E6%9C%8D%E5%8A%A1/</url>
+      
+        <content type="html"><![CDATA[<h2 id="samba服务"><a href="#samba服务" class="headerlink" title="samba服务"></a>samba服务</h2><p>samba是什么<br>samba是什么？能干什么？什么场合需要用到它？</p><p>samba 是基于SMB协议（ServerMessage Block，信息服务块）的开源软件，samba也可以是SMB协议的商标。SMB是一种Linux、UNIX系统上可用于共享文件和打印机等资源的协议，这种协议是基于Client\Server型的协议，Client端可以通过SMB访问到Server（服务器）上的共享资源。当Windows是 Client，CentOS是服务器时，通过Samba就可以实现window访问Linux的资源，实现两个系统间的数据交互。<br>Linux对于开发来说是一个非常好的系统，但是人机友好不如windows，我就通常在windows上用sourceinsight编辑代码，然后在Linux端编译运行，而且经常需要把音视频从Linux和windows端互相拷贝，这时候Samba就显得很方便了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 服务 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> centos </tag>
+            
+            <tag> 服务 </tag>
+            
+            <tag> samba </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>centos7开启ssh</title>
+      <link href="2020/12/04/Linux/%E5%91%BD%E4%BB%A4/centos7%E5%BC%80%E5%90%AFssh/"/>
+      <url>2020/12/04/Linux/%E5%91%BD%E4%BB%A4/centos7%E5%BC%80%E5%90%AFssh/</url>
+      
+        <content type="html"><![CDATA[<p>开启centos7，确保自己的openssh-server已经安装</p><h2 id="一、安装openssh"><a href="#一、安装openssh" class="headerlink" title="一、安装openssh"></a>一、安装openssh</h2><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@cloudhost7</span> ~]<span class="comment"># yum install -y openssh-serever</span></span><br></pre></td></tr></table></figure><p><img src="https://storage.tonlx.cn/images/2020/12/04/20201204152735.png"></p><h2 id="二、把监听端口和监听地址等打开"><a href="#二、把监听端口和监听地址等打开" class="headerlink" title="二、把监听端口和监听地址等打开"></a>二、把监听端口和监听地址等打开</h2><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@cloudhost7</span> ~]<span class="comment"># vi /etc/ssh/sshd_config </span></span><br></pre></td></tr></table></figure><p>注释掉这几行前面的#</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Port 22    //监听端口</span><br><span class="line">ListenAddress 0.0.0.0 //监听地址</span><br><span class="line"><span class="selector-tag">istenAddress</span> ::</span><br><span class="line">PermitRootLogin yes  //允许远程登陆</span><br><span class="line">PasswordAuthentication yes //使用用户名密码来作为连接验证</span><br></pre></td></tr></table></figure><p><img src="https://storage.tonlx.cn/images/2020/12/04/20201204152943.png"></p><h2 id="三、-开启-sshd-服务"><a href="#三、-开启-sshd-服务" class="headerlink" title="三、 开启  sshd  服务"></a>三、 开启  sshd  服务</h2><p>输入 </p><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@cloudhost7</span> ~]<span class="comment"># sudo service sshd start</span></span><br></pre></td></tr></table></figure><h2 id="四、设置开机自启动sshd"><a href="#四、设置开机自启动sshd" class="headerlink" title="四、设置开机自启动sshd"></a>四、设置开机自启动sshd</h2><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@cloudhost7</span> ~]<span class="comment"># systemctl enable sshd.service</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 命令 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 命令 </tag>
+            
+            <tag> centos7 </tag>
+            
+            <tag> ssh </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>centos7修改主机名称</title>
+      <link href="2020/12/04/Linux/%E5%91%BD%E4%BB%A4/centos7%E4%BF%AE%E6%94%B9%E4%B8%BB%E6%9C%BA%E5%90%8D%E7%A7%B0/"/>
+      <url>2020/12/04/Linux/%E5%91%BD%E4%BB%A4/centos7%E4%BF%AE%E6%94%B9%E4%B8%BB%E6%9C%BA%E5%90%8D%E7%A7%B0/</url>
+      
+        <content type="html"><![CDATA[<p>修改centos7主机名称<br>我是用的是vi编辑器，也可以是nano</p><h2 id="一、以root方式登陆"><a href="#一、以root方式登陆" class="headerlink" title="一、以root方式登陆"></a>一、以root方式登陆</h2><p><img src="https://storage.tonlx.cn/images/2020/12/04/20201204150021.png"></p><h2 id="二、输入hostname可查看名称"><a href="#二、输入hostname可查看名称" class="headerlink" title="二、输入hostname可查看名称"></a>二、输入hostname可查看名称</h2><p><img src="https://storage.tonlx.cn/images/2020/12/04/20201204150142.png"></p><h2 id="输入vi-etc-hostname修改名称"><a href="#输入vi-etc-hostname修改名称" class="headerlink" title="输入vi /etc/hostname修改名称"></a>输入vi /etc/hostname修改名称</h2><p><img src="https://storage.tonlx.cn/images/2020/12/04/20201204150245.png"><br>这里我给它修改为cloudhost7</p><h2 id="输入vi-etc-hosts-修改网络名"><a href="#输入vi-etc-hosts-修改网络名" class="headerlink" title="输入vi /etc/hosts 修改网络名"></a>输入vi /etc/hosts 修改网络名</h2><p><img src="https://storage.tonlx.cn/images/2020/12/04/20201204150535.png"><br>修改括号中的部分<br><img src="https://storage.tonlx.cn/images/2020/12/04/20201204150615.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 命令 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 命令 </tag>
+            
+            <tag> centos7 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>神马基本</title>
       <link href="2020/11/25/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/%E7%A5%9E%E9%A9%AC%E5%9F%BA%E6%9C%AC/"/>
       <url>2020/11/25/%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/%E7%A5%9E%E9%A9%AC%E5%9F%BA%E6%9C%AC/</url>
@@ -17,22 +135,9 @@
     
     
     <entry>
-      <title>安装archlinux</title>
-      <link href="2020/11/24/Linux/%E5%AE%89%E8%A3%85archlinux/"/>
-      <url>2020/11/24/Linux/%E5%AE%89%E8%A3%85archlinux/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Linux必须掌握的命令</title>
-      <link href="2020/11/24/Linux/Linux%E5%BF%85%E9%A1%BB%E6%8E%8C%E6%8F%A1%E7%9A%84%E5%91%BD%E4%BB%A4/"/>
-      <url>2020/11/24/Linux/Linux%E5%BF%85%E9%A1%BB%E6%8E%8C%E6%8F%A1%E7%9A%84%E5%91%BD%E4%BB%A4/</url>
+      <link href="2020/11/24/Linux/%E5%91%BD%E4%BB%A4/Linux%E5%BF%85%E9%A1%BB%E6%8E%8C%E6%8F%A1%E7%9A%84%E5%91%BD%E4%BB%A4/"/>
+      <url>2020/11/24/Linux/%E5%91%BD%E4%BB%A4/Linux%E5%BF%85%E9%A1%BB%E6%8E%8C%E6%8F%A1%E7%9A%84%E5%91%BD%E4%BB%A4/</url>
       
         <content type="html"><![CDATA[]]></content>
       
@@ -40,6 +145,8 @@
       <categories>
           
           <category> Linux </category>
+          
+          <category> 命令 </category>
           
       </categories>
       
@@ -111,19 +218,6 @@
             <tag> 运维 </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title></title>
-      <link href="2020/11/16/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/GIMP%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6/"/>
-      <url>2020/11/16/%E5%B8%B8%E7%94%A8%E5%B7%A5%E5%85%B7/GIMP%E5%9B%BE%E7%89%87%E5%A4%84%E7%90%86%E8%BD%AF%E4%BB%B6/</url>
-      
-        <content type="html"><![CDATA[<hr><p>title: GIMP图片处理软件<br>date: 2020-11-16 20:55:58<br>top:<br>categories:</p><ul><li>常用工具<br>tags:</li><li>工具</li><li>图片</li></ul><hr><p><img src="https://bkimg.cdn.bcebos.com/pic/060828381f30e9246ff0edda4c086e061c95f781?x-bce-process=image/resize,m_lfit,w_268,limit_1/format,f_jpg" alt="enter description here"><br>GIMP 是 GNU 图像处理程序(GNU Image Manipulation Program)的缩写。包括几乎所有图象处理所需的功能，号称Linux下的PhotoShop。GIMP在Linux系统推出时就风靡了许多绘图爱好 者的喜爱，它的接口相当轻巧，但其功能却不输于专业的绘图软件；它提供了各种的影像处理工具、滤镜，还有许多的组件模块，对于要制作一个又酷又炫的网页按 钮或网站Logo来说是一个非常方便好用的绘图软件，因为它也提供了许多的组件模块，你只要稍加修改一下，便可制作出一个属于你的网页按钮或网站 Logo。</p><p>Windows版下载<br>重点：支持开源<br>百度云下载<br>链接：<a href="https://pan.baidu.com/s/1qIiG9cq6yQcawEXVj0fqOA">https://pan.baidu.com/s/1qIiG9cq6yQcawEXVj0fqOA</a><br>提取码：4vxs </p><p>曲奇云下载</p>]]></content>
-      
-      
       
     </entry>
     
