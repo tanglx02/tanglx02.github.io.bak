@@ -703,12 +703,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2020-12-14 21:04:18'>2020-12-08 13:36</time>
+            发布时间 : <time class="date" title='最后更新: 2020-12-14 21:08:42'>2020-12-08 13:36</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:1.4k</span>
+        <span>字数:1.5k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -842,12 +842,12 @@
 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">建立smb用户</span><br><span class="line">smbpasswd  -a user1_1 &#x2F;&#x2F;设置smb用户，前提要有对应的系统用户</span><br></pre></td></tr></table></figure>
 <p><strong>建立目录</strong></p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p  /var/samba/<span class="number">1</span></span><br><span class="line">chmod <span class="number">777</span> /var/samba/<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p  /var/samba/<span class="number">1</span></span><br></pre></td></tr></table></figure>
 
 <p><strong>关闭防火墙和selinux</strong></p>
 <figure class="highlight gauss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">临时关闭</span><br><span class="line">setenforce <span class="number">0</span>  <span class="comment">//selinux</span></span><br><span class="line"><span class="keyword">system</span> <span class="keyword">stop</span> firewalld <span class="comment">//停止firewalld</span></span><br><span class="line">永久关闭</span><br><span class="line">vim /etc/sysconfig/selinux <span class="comment">//将SELINUX=enforcing改成disabled</span></span><br><span class="line">systemctl <span class="keyword">disable</span> firewalld  <span class="comment">//禁止开机启动firewalld</span></span><br></pre></td></tr></table></figure>
-<p><strong>开放samba服务器对读写新建目录的权利</strong></p>
-<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chcon -<span class="built_in">t</span> samba_share_t /<span class="built_in">var</span>/smaba/<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p><strong>开放samba服务器对读写新建目录的权利以及用户读写权限</strong></p>
+<figure class="highlight excel"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chcon -<span class="built_in">t</span> samba_share_t /<span class="built_in">var</span>/smaba/<span class="number">1</span>  //samba服务器</span><br><span class="line">chmod <span class="number">777</span> /<span class="built_in">var</span>/samba/<span class="number">1</span>	//用户读写</span><br></pre></td></tr></table></figure>
 <p><strong>配置文件操作</strong></p>
 <figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">	[share] <span class="comment">//设置共享名称</span></span><br><span class="line">common = Hello <span class="comment">//描述信息</span></span><br><span class="line">	browseable=yes  <span class="comment">//是否允许查看共享内容，如果是否，后期则需要输入绝对路径才可以查看到</span></span><br><span class="line">	path = /var/samba/<span class="number">1</span> <span class="comment">//共享路径 </span></span><br><span class="line">	★passdb backend = tdbsam 用户数据库模式，如果是smbpasswd模式，可以改为smb passwd file = /etc/samba/sabpasswd</span><br><span class="line">	public = yes 	<span class="comment">//允许匿名查看</span></span><br><span class="line">	★valid users = @组<span class="number">1</span>,用户<span class="number">1</span> <span class="comment">//设置访问用户（仅允许这里面的用户访问，其它无法访问）</span></span><br><span class="line">	<span class="comment">//设置目录可写</span></span><br><span class="line">	writable = yes #读写</span><br><span class="line">	★writable = no #只读 </span><br><span class="line">	★write <span class="type">list</span> =@组<span class="number">1</span>，用户<span class="number">1</span>  (配合writable=no使用，只允许write <span class="type">list</span>里面的用户具有写入权限)</span><br><span class="line"></span><br><span class="line">	口诀 (使用默认就可以，谁能访问设valid users，读写权限writable设no，加上write <span class="type">list</span>来控制)</span><br></pre></td></tr></table></figure>
 
