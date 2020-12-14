@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>服务器10天冲刺</title>
+      <link href="2020/12/14/I%20Think/%E6%9C%8D%E5%8A%A1%E5%99%A810%E5%A4%A9%E5%86%B2%E5%88%BA/"/>
+      <url>2020/12/14/I%20Think/%E6%9C%8D%E5%8A%A1%E5%99%A810%E5%A4%A9%E5%86%B2%E5%88%BA/</url>
+      
+        <content type="html"><![CDATA[<p>第一天 2020年12月14日<br>Linux: samba、磁盘阵列<br>Windows: 磁盘阵列<br>第二天 2020年12月15日<br>Linux: DNS、DHCP<br>Windows:DNS、DHCP<br>第三天 2020年12月16日<br>Linux:E-mail<br>Windows:AD、CA<br>第四天 2020年12月17日<br>Linux:群集<br>Windows:群集<br>第五天 2020年12月18日<br>Linux:防火墙<br>Windows：防火墙<br>第六天 2020年12月19日<br>Linux: web、数据库<br>Windows:web、数据库<br>第七天 2020年12月20日<br>Linux:FTP、NAT<br>Windows:FTP、NAT</p><p>剩下时间差缺补漏</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> I Think </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 服务器 </tag>
+            
+            <tag> I Think </tag>
+            
+            <tag> 技能大赛 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>修改windows10 user位置</title>
       <link href="2020/12/09/Windows/%E4%BF%AE%E6%94%B9windows10%20user%E4%BD%8D%E7%BD%AE/"/>
       <url>2020/12/09/Windows/%E4%BF%AE%E6%94%B9windows10%20user%E4%BD%8D%E7%BD%AE/</url>
