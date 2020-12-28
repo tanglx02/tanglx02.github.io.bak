@@ -4,6 +4,43 @@
   
     
     <entry>
+      <title>搭建邮箱服务器</title>
+      <link href="2020/12/18/Linux/%E6%9C%8D%E5%8A%A1/%E6%90%AD%E5%BB%BA%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+      <url>2020/12/18/Linux/%E6%9C%8D%E5%8A%A1/%E6%90%AD%E5%BB%BA%E9%82%AE%E7%AE%B1%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+      
+        <content type="html"><![CDATA[<h1 id="搭建邮箱服务器"><a href="#搭建邮箱服务器" class="headerlink" title="搭建邮箱服务器"></a>搭建邮箱服务器</h1><h2 id="一、概念"><a href="#一、概念" class="headerlink" title="一、概念"></a>一、概念</h2><p>POP3协议允许电子邮件客户端下载服务器上的邮件，但是在客户端的操作（如移动邮件、标记已读等），不会反馈到服务器上，比如通过客户端收取了邮箱中的3封邮件并移动到其他文件夹，邮箱服务器上的这些邮件是没有同时被移动的 。</p><p>而IMAP提供webmail 与电子邮件客户端之间的双向通信，客户端的操作都会反馈到服务器上，对邮件进行的操作，服务器上的邮件也会做相应的动作。</p><p>SMTPSMTP是一种提供可靠且有效的电子邮件传输的协议。SMTP是建立在FTP文件传输服务上的一种邮件服务，主要用于系统之间的邮件信息传递，并提供有关来信的通知。<br>| 服务器名称 | 服务器地址      | 服务器端口号（非加密） | 服务器端口号（SSL加密） |<br>| ———- | ————— | ———————- | ———————– |<br>| POP3       | pop3.aliyun.com | 110                    | 995                     |<br>| SMTP       | smtp.aliyun.com | 25                     | 465                     |<br>| IMAP       | imap.aliyun.com | 143                    |  993                       |</p><p>linux 平台开源免费的邮件服务器包括：Sendmail、Postfix、Qmail；而且windows平台主要为Exchange服务器(正版需要收费)</p><p>邮件相关名称概念汇总:</p><table><thead><tr><th>MUA</th><th>用户代理端，即用户使用的写信、收信客户端软件</th></tr></thead><tbody><tr><td>MTA</td><td>邮件传输端，常说的邮箱服务器，用于转发、收取用于邮箱</td></tr><tr><td>MDA</td><td>邮件代理端，相当于MUA和MTA的中间人，可用于过滤垃圾邮件</td></tr><tr><td>POP</td><td>邮局协议，用于MUA连接服务器收取用户邮件，通信端口110</td></tr><tr><td>IMAP</td><td>互联网应用协议，功能较POP多，通信端口143</td></tr><tr><td>SMTP</td><td>简单邮件传输协议，MUA连接MTA或MTA连接MTA发送邮件使用此协议，通用端口25</td></tr></tbody></table><h2 id="二、Sendmail"><a href="#二、Sendmail" class="headerlink" title="二、Sendmail"></a>二、Sendmail</h2><h3 id="1、Sendmail安装配置"><a href="#1、Sendmail安装配置" class="headerlink" title="1、Sendmail安装配置"></a>1、Sendmail安装配置</h3><p>(1)</p><p> Sendmail 环境版本</p><table><thead><tr><th>系统版本</th><th>Centos 7.0 64位</th></tr></thead><tbody><tr><td>Sendmail版本</td><td>sendmail-8.14.7-4.el7</td></tr></tbody></table><p>域名一个 </p><p>thin.com</p><p>(2)Sendmail安装</p><p><code>[root@test ~]# yum install sendmail*</code></p><p>(3)sendmail服务配置</p><ul><li><p>/etc/mail/sendmail.mc   #可修改配置文件</p></li><li><p>/etc/mail/sendmail.mc  #生产的配置文件</p></li></ul><p>(4)<code>给配置文件做备份</code></p><p><code>[root@test mail]# cp /etc/mail/sendmail.cf /etc/mail/sendmail.cf.bak</code><br><code>[root@test mail]# cp /etc/mail/sendmail.mc /etc/mail/sendmail.mc.bak</code></p><p>(5)修改服务域名</p><p><code>[root@test mail]# echo &quot;thin.com&quot; &gt;&gt; local-host-names</code> </p><p>(6)配置sendmail服务器的监听地址网卡为0.0.0.0</p><p><code>[root@test mail]# vim /etc/mail/sendmail.mc</code></p><p><code>DAEMON_OPTIONS(</code>Port=smtp,Addr=0.0.0.0, Name=MTA’)dnl`</p><p>(7)开启smtp所有用户必须认证</p><p>[root@test mail]# vim /etc/mail/sendmail.mc</p><p><img src="https://storage.tonlx.cn/images/2020/12/18/20201218131002.png"></p><p>删除前面的dnl</p><p>(8)生成sendmail.cf配置文件</p><p><code>[root@test mail]# m4 /etc/mail/sendmail.mc &gt; /etc/mail/sendmail.cf</code></p><p>(9)启动服务与查看监听端口</p><p><code>[root@test mail]# systemctl restart sendmail.service</code> </p><p><code>[root@test mail]# netstat -tnl</code></p><p>(10)配置SMTP认证</p><p>Saslauthd 服务作用，提供SMTP用户验证，检查用户名和密码是否正确，基于系统shadow文件来验证配置</p><p><code>[root@test mail]# systemctl restart saslauthd</code></p><h2 id="三、Dovecot服务配置"><a href="#三、Dovecot服务配置" class="headerlink" title="三、Dovecot服务配置"></a>三、Dovecot服务配置</h2><p>Dovecot是一个开源的IMAP和POP3服务器，支持LINU/UNIX系统，作为IMAP和POP3服务器，Dovecot邮件用户代理(MUA)提供了一种访问服务器上的存储邮件方法。当时Dovecot并不是负责从其他邮件服务器接收邮件。</p><p>Dovecot只是将以存储在邮件服务器上的邮件通过MUA显示出啦，IMAP和POP3是用于连接MUA与邮件服务器的两种常见协议。</p><p>(1)安装Dovecot服务</p><p><code>yum install dovecot*</code></p><p>(2)修改dovecot配置<br>去掉/etc/dovecot.conf 中如下</p><p><code>#protocols = imap pop3 lmtp</code></p><p><code>#listen = *</code> </p><p><img src="https://storage.tonlx.cn/images/2020/12/18/20201218134529.png"><br>修改/etc/dovecot/conf.d目录下的<br><img src="https://storage.tonlx.cn/images/2020/12/19/_20201219142139.png"><br>10-auth.conf</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">disable_plaintext_auth</span> = <span class="literal">no</span></span><br></pre></td></tr></table></figure><p>10-mail.conf</p><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mail_location = <span class="attr">mbox:</span><span class="regexp">~/mail:INBOX=/</span>var<span class="regexp">/mail/</span>%u</span><br></pre></td></tr></table></figure><p>10-ssl.conf<br><img src="https://storage.tonlx.cn/images/2020/12/19/20201219142556.png"></p><p>(3)建立系统用户</p><p>[root@test etc]# groupadd mailgroup<br>[root@test etc]# useradd -g mailgroup -s /sbin/nologin boss<br>[root@test etc]# passwd boss</p><p>(4)服务设置</p><p>[root@test etc]# systemctl restart dovecot<br>[root@tycoon conf.d]# systemctl restart sendmail.service<br>[root@tycoon conf.d]# systemctl restart saslauthd<br>[root@tycoon conf.d]# systemctl stop firewalld</p><p>(5)查看监听端口<br>[root@tycoon conf.d]# netstat -tln<br><img src="https://storage.tonlx.cn/images/2020/12/19/20201219142839.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 服务 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Windows </tag>
+            
+            <tag> Linux </tag>
+            
+            <tag> 笔记 </tag>
+            
+            <tag> 技能比赛 </tag>
+            
+            <tag> 服务器 </tag>
+            
+            <tag> 邮箱 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>服务器10天冲刺</title>
       <link href="2020/12/14/I%20Think/%E6%9C%8D%E5%8A%A1%E5%99%A810%E5%A4%A9%E5%86%B2%E5%88%BA/"/>
       <url>2020/12/14/I%20Think/%E6%9C%8D%E5%8A%A1%E5%99%A810%E5%A4%A9%E5%86%B2%E5%88%BA/</url>
@@ -417,378 +454,6 @@
             <tag> 工具 </tag>
             
             <tag> 运维 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Windows设置密码策略</title>
-      <link href="2020/11/16/Windows/%E7%BB%84%E7%AD%96%E7%95%A5/Windows%E8%AE%BE%E7%BD%AE%E5%AF%86%E7%A0%81%E7%AD%96%E7%95%A5/"/>
-      <url>2020/11/16/Windows/%E7%BB%84%E7%AD%96%E7%95%A5/Windows%E8%AE%BE%E7%BD%AE%E5%AF%86%E7%A0%81%E7%AD%96%E7%95%A5/</url>
-      
-        <content type="html"><![CDATA[<p>给Windows设置密码策略主要有密码策略和密码锁定策略</p><h2 id="密码策略图"><a href="#密码策略图" class="headerlink" title="密码策略图"></a>密码策略图</h2><p><img src="https://storage.tonlx.cn/images/2020/11/16/20201116174440.png"><br>密码锁定策略图<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116174536.png"></p><h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><p>1、ctrl+r 打开运行<br>2、输入gpedit.msc<br>3、计算机配置-Windows配置-安全设置-账户策略</p><h2 id="操作流程图"><a href="#操作流程图" class="headerlink" title="操作流程图"></a>操作流程图</h2><p>1、ctrl+r 打开运行<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116162358.png"><br>2、输入gpedit.msc<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116162503.png"><br>3、计算机配置-Windows配置-安全设置-账户策略<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116174802.png"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Windows </category>
-          
-          <category> 组策略 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Windows </tag>
-            
-            <tag> server </tag>
-            
-            <tag> 组策略 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>为Windows指定的组或者用户分配权限</title>
-      <link href="2020/11/16/Windows/%E7%BB%84%E7%AD%96%E7%95%A5/%E4%B8%BAWindows%E6%8C%87%E5%AE%9A%E7%9A%84%E7%BB%84%E6%88%96%E8%80%85%E7%94%A8%E6%88%B7%E5%88%86%E9%85%8D%E6%9D%83%E9%99%90/"/>
-      <url>2020/11/16/Windows/%E7%BB%84%E7%AD%96%E7%95%A5/%E4%B8%BAWindows%E6%8C%87%E5%AE%9A%E7%9A%84%E7%BB%84%E6%88%96%E8%80%85%E7%94%A8%E6%88%B7%E5%88%86%E9%85%8D%E6%9D%83%E9%99%90/</url>
-      
-        <content type="html"><![CDATA[<p>为Windows指定的组或者用户分配高级权限</p><h2 id="可指定分配的权限图"><a href="#可指定分配的权限图" class="headerlink" title="可指定分配的权限图"></a>可指定分配的权限图</h2><p>图一<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116173056.png"><br>图二<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116173135.png"></p><h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><p>1、ctrl+r 打开运行<br>2、输入gpedit.msc<br>3、计算机配置-Windows配置-安全设置-本地策略-用户权限策略</p><h2 id="操作流程图"><a href="#操作流程图" class="headerlink" title="操作流程图"></a>操作流程图</h2><p>1、ctrl+r 打开运行<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116162358.png"><br>2、输入gpedit.msc<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116162503.png"><br>3、计算机配置-Windows配置-本地策略-用户权限策略</p><p><img src="https://storage.tonlx.cn/images/2020/11/16/20201116173056.png"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Windows </category>
-          
-          <category> 组策略 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Windows </tag>
-            
-            <tag> server </tag>
-            
-            <tag> 组策略 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Windows启用区分大小写</title>
-      <link href="2020/11/16/Windows/%E7%BB%84%E7%AD%96%E7%95%A5/Windows%E5%90%AF%E7%94%A8%E5%8C%BA%E5%88%86%E5%A4%A7%E5%B0%8F%E5%86%99/"/>
-      <url>2020/11/16/Windows/%E7%BB%84%E7%AD%96%E7%95%A5/Windows%E5%90%AF%E7%94%A8%E5%8C%BA%E5%88%86%E5%A4%A7%E5%B0%8F%E5%86%99/</url>
-      
-        <content type="html"><![CDATA[<p>Windows组策略启用区分大小写</p><h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p><img src="https://storage.tonlx.cn/images/2020/11/16/20201116170227.png"></p><h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><p>1、ctrl+r 打开运行<br>2、输入gpedit.msc<br>3、计算机配置-Windows配置-安全设置-本地策略-安全选项-系统对象：非Windows子系统不要求区分大小写(禁用)</p><h2 id="操作流程图"><a href="#操作流程图" class="headerlink" title="操作流程图"></a>操作流程图</h2><p>1、ctrl+r 打开运行<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116162358.png"><br>2、输入gpedit.msc<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116162503.png"><br>3、计算机配置-Windows配置-安全设置-本地策略-安全选项-系统对象：非Windows子系统不要求区分大小写(如需开启则禁用)<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116170227.png"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Windows </category>
-          
-          <category> 组策略 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Windows </tag>
-            
-            <tag> server </tag>
-            
-            <tag> 组策略 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Windows禁止使用空密码登陆、允许空密码登陆</title>
-      <link href="2020/11/16/Windows/%E7%BB%84%E7%AD%96%E7%95%A5/Windows%E7%A6%81%E6%AD%A2%E4%BD%BF%E7%94%A8%E7%A9%BA%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86%E3%80%81%E5%85%81%E8%AE%B8%E7%A9%BA%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86/"/>
-      <url>2020/11/16/Windows/%E7%BB%84%E7%AD%96%E7%95%A5/Windows%E7%A6%81%E6%AD%A2%E4%BD%BF%E7%94%A8%E7%A9%BA%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86%E3%80%81%E5%85%81%E8%AE%B8%E7%A9%BA%E5%AF%86%E7%A0%81%E7%99%BB%E9%99%86/</url>
-      
-        <content type="html"><![CDATA[<p>Windows组策略禁止使用空密码登陆、或者Windows允许空密码登陆</p><h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p><img src="https://storage.tonlx.cn/images/2020/11/16/20201116170711.png"></p><h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><p>1、ctrl+r 打开运行<br>2、输入gpedit.msc<br>3、计算机配置-Windows配置-安全设置-本地策略-安全选项-账户：使用空密码的本地账户只允许控制台登陆(开启则允许使用空密码)</p><h2 id="操作流程图"><a href="#操作流程图" class="headerlink" title="操作流程图"></a>操作流程图</h2><p>1、ctrl+r 打开运行<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116162358.png"><br>2、输入gpedit.msc<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116162503.png"><br>3、计算机配置-Windows配置-本地策略-安全选项-账户：使用空密码的本地账户只允许控制台登陆(开启则允许使用空密码)<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116171230.png"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Windows </category>
-          
-          <category> 组策略 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Windows </tag>
-            
-            <tag> server </tag>
-            
-            <tag> 组策略 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Windows用户登陆界面消息提示</title>
-      <link href="2020/11/16/Windows/%E7%BB%84%E7%AD%96%E7%95%A5/Windows%E7%94%A8%E6%88%B7%E7%99%BB%E9%99%86%E7%95%8C%E9%9D%A2%E6%B6%88%E6%81%AF%E6%8F%90%E7%A4%BA/"/>
-      <url>2020/11/16/Windows/%E7%BB%84%E7%AD%96%E7%95%A5/Windows%E7%94%A8%E6%88%B7%E7%99%BB%E9%99%86%E7%95%8C%E9%9D%A2%E6%B6%88%E6%81%AF%E6%8F%90%E7%A4%BA/</url>
-      
-        <content type="html"><![CDATA[<p>Windows组策略用户登陆消息提示</p><h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p><img src="https://storage.tonlx.cn/images/2020/11/16/20201116173740.png"></p><h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><p>1、ctrl+r 打开运行<br>2、输入gpedit.msc<br>3、计算机配置-Windows配置-安全设置-本地策略-安全选项-交互式登陆:试图登陆的用户消息文本</p><h2 id="操作流程图"><a href="#操作流程图" class="headerlink" title="操作流程图"></a>操作流程图</h2><p>1、ctrl+r 打开运行<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116162358.png"><br>2、输入gpedit.msc<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116162503.png"><br>3、计算机配置-Windows配置-安全设置-本地策略-安全选项-交互式登陆:试图登陆的用户消息文本(可以设置标题和文本)<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116165732.png"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Windows </category>
-          
-          <category> 组策略 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Windows </tag>
-            
-            <tag> server </tag>
-            
-            <tag> 组策略 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Windows禁止管理员状态、启动来宾状态</title>
-      <link href="2020/11/16/Windows/%E7%BB%84%E7%AD%96%E7%95%A5/Windows%E7%A6%81%E6%AD%A2%E7%AE%A1%E7%90%86%E5%91%98%E7%8A%B6%E6%80%81%E3%80%81%E5%90%AF%E5%8A%A8%E6%9D%A5%E5%AE%BE%E7%8A%B6%E6%80%81/"/>
-      <url>2020/11/16/Windows/%E7%BB%84%E7%AD%96%E7%95%A5/Windows%E7%A6%81%E6%AD%A2%E7%AE%A1%E7%90%86%E5%91%98%E7%8A%B6%E6%80%81%E3%80%81%E5%90%AF%E5%8A%A8%E6%9D%A5%E5%AE%BE%E7%8A%B6%E6%80%81/</url>
-      
-        <content type="html"><![CDATA[<p>Windows组策略禁止管理员状态、启动来宾状态</p><h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p><img src="https://storage.tonlx.cn/images/2020/11/16/20201116170711.png"></p><h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><p>1、ctrl+r 打开运行<br>2、输入gpedit.msc<br>3、计算机配置-Windows配置-安全设置-本地策略-安全选项-账户:管理员状态(关闭或者保持)</p><h2 id="操作流程图"><a href="#操作流程图" class="headerlink" title="操作流程图"></a>操作流程图</h2><p>1、ctrl+r 打开运行<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116162358.png"><br>2、输入gpedit.msc<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116162503.png"><br>3、计算机配置-Windows配置-安全设置-本地策略-安全选项-账户:管理员状态(关闭或者保持)<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116170711.png"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Windows </category>
-          
-          <category> 组策略 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Windows </tag>
-            
-            <tag> server </tag>
-            
-            <tag> 组策略 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Windows禁止登陆Microsoft账户</title>
-      <link href="2020/11/16/Windows/%E7%BB%84%E7%AD%96%E7%95%A5/Windows%E7%A6%81%E6%AD%A2%E7%99%BB%E9%99%86Microsoft%E8%B4%A6%E6%88%B7/"/>
-      <url>2020/11/16/Windows/%E7%BB%84%E7%AD%96%E7%95%A5/Windows%E7%A6%81%E6%AD%A2%E7%99%BB%E9%99%86Microsoft%E8%B4%A6%E6%88%B7/</url>
-      
-        <content type="html"><![CDATA[<p>Windows组策略禁止登陆Microsoft账户</p><h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p><img src="https://storage.tonlx.cn/images/2020/11/16/20201116172223.png"></p><h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><p>1、ctrl+r 打开运行<br>2、输入gpedit.msc<br>3、计算机配置-Windows配置-安全设置-本地策略-安全选项-账户：阻止Microsoft账户</p><h2 id="操作流程图"><a href="#操作流程图" class="headerlink" title="操作流程图"></a>操作流程图</h2><p>1、ctrl+r 打开运行<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116162358.png"><br>2、输入gpedit.msc<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116162503.png"><br>3、计算机配置-Windows配置-本地策略-安全选项-账户：阻止Microsoft账户<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116172223.png"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Windows </category>
-          
-          <category> 组策略 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Windows </tag>
-            
-            <tag> server </tag>
-            
-            <tag> 组策略 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>windows禁止开机显示用户名</title>
-      <link href="2020/11/16/Windows/%E7%BB%84%E7%AD%96%E7%95%A5/windows%E7%A6%81%E6%AD%A2%E5%BC%80%E6%9C%BA%E6%98%BE%E7%A4%BA%E7%94%A8%E6%88%B7%E5%90%8D/"/>
-      <url>2020/11/16/Windows/%E7%BB%84%E7%AD%96%E7%95%A5/windows%E7%A6%81%E6%AD%A2%E5%BC%80%E6%9C%BA%E6%98%BE%E7%A4%BA%E7%94%A8%E6%88%B7%E5%90%8D/</url>
-      
-        <content type="html"><![CDATA[<p>Windows组策略不显示最后登陆的用户名</p><h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p><img src="https://storage.tonlx.cn/images/2020/11/16/20201116173920.png"></p><h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><p>1、ctrl+r 打开运行<br>2、输入gpedit.msc<br>3、计算机配置-Windows配置-安全设置-本地策略-安全选项-交互式登陆:不显示最后的用户（点击启动）</p><h2 id="操作流程图"><a href="#操作流程图" class="headerlink" title="操作流程图"></a>操作流程图</h2><p>1、ctrl+r 打开运行<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116162358.png"><br>2、输入gpedit.msc<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116162503.png"><br>3、计算机配置-Windows配置-安全设置-本地策略-安全选项-交互式登陆:不显示最后的用户（点击启动）<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116163718.png"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Windows </category>
-          
-          <category> 组策略 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Windows </tag>
-            
-            <tag> server </tag>
-            
-            <tag> 组策略 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>windows登陆时候无需按Ctrl+Alt+del</title>
-      <link href="2020/11/16/Windows/%E7%BB%84%E7%AD%96%E7%95%A5/windows%E7%99%BB%E9%99%86%E6%97%B6%E5%80%99%E6%97%A0%E9%9C%80%E6%8C%89Ctrl+Alt+del/"/>
-      <url>2020/11/16/Windows/%E7%BB%84%E7%AD%96%E7%95%A5/windows%E7%99%BB%E9%99%86%E6%97%B6%E5%80%99%E6%97%A0%E9%9C%80%E6%8C%89Ctrl+Alt+del/</url>
-      
-        <content type="html"><![CDATA[<p>windows组策略登陆时候无需按Ctrl+Alt+del</p><h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p><img src="https://storage.tonlx.cn/images/2020/11/16/20201116173920.png"></p><h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><p>1、ctrl+r 打开运行<br>2、输入gpedit.msc<br>3、计算机配置-Windows配置-安全设置-本地策略-安全选项-交互登陆:无需按Ctrl+Alt+Del</p><h2 id="操作流程图"><a href="#操作流程图" class="headerlink" title="操作流程图"></a>操作流程图</h2><p>1、ctrl+r 打开运行<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116162358.png"><br>2、输入gpedit.msc<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116162503.png"><br>3、计算机配置-Windows配置-安全设置-本地策略-安全选项-交互登陆:无需按Ctrl+Alt+Del（点击启动）<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116164644.png"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Windows </category>
-          
-          <category> 组策略 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Windows </tag>
-            
-            <tag> server </tag>
-            
-            <tag> 组策略 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>windows禁止未登录时候关闭计算机</title>
-      <link href="2020/11/16/Windows/%E7%BB%84%E7%AD%96%E7%95%A5/windows%E7%A6%81%E6%AD%A2%E6%9C%AA%E7%99%BB%E5%BD%95%E6%97%B6%E5%80%99%E5%85%B3%E9%97%AD%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-      <url>2020/11/16/Windows/%E7%BB%84%E7%AD%96%E7%95%A5/windows%E7%A6%81%E6%AD%A2%E6%9C%AA%E7%99%BB%E5%BD%95%E6%97%B6%E5%80%99%E5%85%B3%E9%97%AD%E8%AE%A1%E7%AE%97%E6%9C%BA/</url>
-      
-        <content type="html"><![CDATA[<p>windows组策略禁止未登录时候关闭计算机</p><h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p><img src="https://storage.tonlx.cn/images/2020/11/16/20201116173844.png"></p><h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><p>1、ctrl+r 打开运行<br>2、输入gpedit.msc<br>3、计算机配置-Windows配置-安全设置-本地策略-安全选项-关机:允许系统未登录的情况下关闭计算机（点击禁用）</p><h2 id="操作流程图"><a href="#操作流程图" class="headerlink" title="操作流程图"></a>操作流程图</h2><p>1、ctrl+r 打开运行<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116162358.png"><br>2、输入gpedit.msc<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116162503.png"><br>3、计算机配置-Windows配置-安全设置-本地策略-安全选项-关机:允许系统未登录的情况下关闭计算机（点击禁用）<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116164017.png"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Windows </category>
-          
-          <category> 组策略 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Windows </tag>
-            
-            <tag> server </tag>
-            
-            <tag> 组策略 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>windows设置登陆锁定阈值</title>
-      <link href="2020/11/16/Windows/%E7%BB%84%E7%AD%96%E7%95%A5/windows%E8%AE%BE%E7%BD%AE%E7%99%BB%E9%99%86%E9%94%81%E5%AE%9A%E9%98%88%E5%80%BC/"/>
-      <url>2020/11/16/Windows/%E7%BB%84%E7%AD%96%E7%95%A5/windows%E8%AE%BE%E7%BD%AE%E7%99%BB%E9%99%86%E9%94%81%E5%AE%9A%E9%98%88%E5%80%BC/</url>
-      
-        <content type="html"><![CDATA[<p>windows组策略登陆锁定阈值</p><h2 id="效果图"><a href="#效果图" class="headerlink" title="效果图"></a>效果图</h2><p><img src="https://storage.tonlx.cn/images/2020/11/16/20201116165225.png"></p><h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><p>1、ctrl+r 打开运行<br>2、输入gpedit.msc<br>3、计算机配置-Windows配置-安全设置-本地策略-安全选项-交互式登陆:计算机账户锁定阈值<br>4、说明<br>锁定计算机后，只能通过在控制台中提供恢复密钥来恢复。你可以将此值设置为介于 1 和 999 次失败登录尝试次数之间。如果将此值设置为 0，计算机将永不锁定。从 1 到 3 之间的值将被解释为 4。</p><h2 id="操作流程图"><a href="#操作流程图" class="headerlink" title="操作流程图"></a>操作流程图</h2><p>1、ctrl+r 打开运行<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116162358.png"><br>2、输入gpedit.msc<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116162503.png"><br>3、计算机配置-Windows配置-安全设置-本地策略-安全选项-交互式登陆:计算机账户锁定阈值（输入阈值）<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116165225.png"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Windows </category>
-          
-          <category> 组策略 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Windows </tag>
-            
-            <tag> server </tag>
-            
-            <tag> 组策略 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>windows禁用命令提示符</title>
-      <link href="2020/11/16/Windows/%E7%BB%84%E7%AD%96%E7%95%A5/windows%E7%A6%81%E7%94%A8%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E7%AC%A6/"/>
-      <url>2020/11/16/Windows/%E7%BB%84%E7%AD%96%E7%95%A5/windows%E7%A6%81%E7%94%A8%E5%91%BD%E4%BB%A4%E6%8F%90%E7%A4%BA%E7%AC%A6/</url>
-      
-        <content type="html"><![CDATA[<p>windows组策略禁用命令提示符</p><h2 id="演示"><a href="#演示" class="headerlink" title="演示"></a>演示</h2><p><img src="https://storage.tonlx.cn/images/2020/11/16/20201116161959.png"></p><h2 id="操作流程"><a href="#操作流程" class="headerlink" title="操作流程"></a>操作流程</h2><p>1、ctrl+r 打开运行<br>2、输入gpedit.msc<br>3、用户配置-管理模板-系统-阻止访问命令提示符（右键编辑点击启动）</p><h2 id="操作流程图"><a href="#操作流程图" class="headerlink" title="操作流程图"></a>操作流程图</h2><p>1、ctrl+r 打开运行<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116162358.png"><br>2、输入gpedit.msc<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116162503.png"><br>3、用户配置-管理模板-系统-阻止访问命令提示符（右键编辑点击启动）<br><img src="https://storage.tonlx.cn/images/2020/11/16/20201116162535.png"></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> Windows </category>
-          
-          <category> 组策略 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> Windows </tag>
-            
-            <tag> server </tag>
-            
-            <tag> 组策略 </tag>
             
         </tags>
       
