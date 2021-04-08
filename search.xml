@@ -4,6 +4,95 @@
   
     
     <entry>
+      <title>Linux 创建LVM卷</title>
+      <link href="2021/04/08/Linux/%E6%9C%8D%E5%8A%A1/Linux%20%E5%88%9B%E5%BB%BALVM%E5%8D%B7/"/>
+      <url>2021/04/08/Linux/%E6%9C%8D%E5%8A%A1/Linux%20%E5%88%9B%E5%BB%BALVM%E5%8D%B7/</url>
+      
+        <content type="html"><![CDATA[<p>LVM(logical volume Manager) 逻辑卷管理，通过将底层物理硬盘抽象封装起来，以逻辑卷的形式表现给上层系统，逻辑卷的大小可以动态调整而且不会丢失现有数据。新加入的硬盘也不会改变现有上层的逻辑卷。</p><ul><li><p>PE (physical Extend)</p><p>默认大小4M</p></li><li><p>PV (physical volume) 物理卷</p></li><li><p>VG (volume group)卷组</p></li><li><p>LV (logical volume)逻辑卷</p></li></ul><p><img src="https://storage.tonlx.cn/images/2020/12/15/20201215110441.png" alt="LVM"></p><h3 id="常用LVM的部署命令"><a href="#常用LVM的部署命令" class="headerlink" title="常用LVM的部署命令"></a>常用LVM的部署命令</h3><table><thead><tr><th>功能/命令</th><th>物理卷管理</th><th>卷组管理</th><th>逻辑卷管理</th></tr></thead><tbody><tr><td>扫描</td><td>pvscan</td><td>vgscan</td><td>lvscan</td></tr><tr><td>建立</td><td>pvcreate</td><td>vgcreate</td><td>lvcreate</td></tr><tr><td>显示</td><td>pvdisplay</td><td>vgdisplay</td><td>lvdisplay</td></tr><tr><td>删除</td><td>pvremove</td><td>vgremove</td><td>lvremove</td></tr><tr><td>扩展</td><td></td><td>vgextend</td><td>lvextend</td></tr><tr><td>缩小</td><td></td><td>vgreduce</td><td>lvreduce</td></tr></tbody></table><h3 id="1、创建LVM"><a href="#1、创建LVM" class="headerlink" title="1、创建LVM"></a>1、创建LVM</h3><p>1.将物理磁盘设备初始化为物理卷</p><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pvcreate /<span class="built_in">dev</span>/sdb /<span class="built_in">dev</span>/sdc</span><br></pre></td></tr></table></figure><p>2.创建卷组，并将PV加入到卷组中</p><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vgcreate thin /<span class="built_in">dev</span>/sdb /<span class="built_in">dev</span>/sdc</span><br></pre></td></tr></table></figure><p>3、基于卷组创建逻辑卷</p><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lvcreate -n thin_1 -L <span class="number">2</span>G thin  <span class="comment">// -n 逻辑卷的名称 -L 逻辑卷 thin卷组</span></span><br></pre></td></tr></table></figure><p>4、为创建好的逻辑卷创建文件系统</p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkfs<span class="selector-class">.ext4</span> /dev/thin/thin_1</span><br></pre></td></tr></table></figure><p>5、将格式化好的逻辑卷挂在使用</p><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mount <span class="regexp">/dev/</span>thin<span class="regexp">/thin_1 /</span>thin_1</span><br></pre></td></tr></table></figure><h3 id="2、卸载LVM"><a href="#2、卸载LVM" class="headerlink" title="2、卸载LVM"></a>2、卸载LVM</h3><p>1.取消LV的挂载</p><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">umount</span> /thin_1</span><br></pre></td></tr></table></figure><p>2.卸载LV</p><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">lvremove</span> /dev/thin/thin_1 </span><br></pre></td></tr></table></figure><p>3.卸载VG</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">vgremove thin</span> </span><br></pre></td></tr></table></figure><p>4.卸载PV</p><figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pvremove /<span class="built_in">dev</span>/sdb /<span class="built_in">dev</span>/sdc</span><br></pre></td></tr></table></figure><p><u>卸载需要按顺序进行操作，比如要卸载PV就要从1执行到5，卸载LV就要从1执行到2</u><u>(即，先取消挂载在卸载LV)</u></p><h3 id="3、LV逻辑卷的拉伸"><a href="#3、LV逻辑卷的拉伸" class="headerlink" title="3、LV逻辑卷的拉伸"></a>3、LV逻辑卷的拉伸</h3><p><strong>1、保证VG有足够的空间</strong><br>vgs<br><strong>2、扩展逻辑卷</strong><br>比如我要扩展/home 大小，首先确认自己的VG(卷组)空间够不够，如果不够需要先扩展卷组<br> 2.1 初始化物理卷</p><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">pvcreate</span> /dev/sdc</span><br></pre></td></tr></table></figure><p>2.2 加入卷组</p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vgextend centos /dev/sdc</span><br></pre></td></tr></table></figure><p>2.3 扩展逻辑卷</p><figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lvextend /dev/centos/home -L +<span class="number">10</span>G</span><br></pre></td></tr></table></figure><p><strong>3、查看扩展后的逻辑卷大小</strong></p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">lvs</span></span><br></pre></td></tr></table></figure><p><strong>4、更新文件系统</strong><br>如果使用xfs文件系统</p><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">xfs_growfs</span> /dev/centos/home</span><br></pre></td></tr></table></figure><p> 如果使用ext4文件系统</p><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">resize2fs</span> /dev/centos/home</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 服务 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 服务 </tag>
+            
+            <tag> LVM </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>linux 基本命令</title>
+      <link href="2021/04/08/Linux/%E5%91%BD%E4%BB%A4/linux%20%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/"/>
+      <url>2021/04/08/Linux/%E5%91%BD%E4%BB%A4/linux%20%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</url>
+      
+        <content type="html"><![CDATA[<table><thead><tr><th>命令</th><th>功能</th></tr></thead><tbody><tr><td><a href="https://www.linuxcool.com/fdisk">fdisk</a></td><td>硬盘配置工具</td></tr><tr><td><a href="https://www.linuxcool.com/partprobe">partprobe</a></td><td>同步磁盘</td></tr><tr><td><a href="https://www.linuxcool.com/mkfs">mkfs</a>.</td><td>格式化硬盘</td></tr><tr><td><a href="https://www.linuxcool.com/mkswap">mkswap</a></td><td>格式化swap</td></tr><tr><td><a href="https://www.linuxcool.com/swapon">swapon</a></td><td>添加swap分区</td></tr><tr><td><a href="https://www.linuxcool.com/swapoff">swapoff</a></td><td>关闭swap分区</td></tr><tr><td><a href="https://www.linuxcool.com/ln">ln</a></td><td>创建链接</td></tr><tr><td><a href="https://www.linuxcool.com/mdadm">mdadm</a></td><td>创建raid</td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 命令 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 命令 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>一、为什么要学习Golang</title>
+      <link href="2021/03/27/%E7%BC%96%E7%A8%8B/Golang/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AD%A6%E4%B9%A0Golang/"/>
+      <url>2021/03/27/%E7%BC%96%E7%A8%8B/Golang/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%AD%A6%E4%B9%A0Golang/</url>
+      
+        <content type="html"><![CDATA[<h1 id="老师寄语"><a href="#老师寄语" class="headerlink" title="老师寄语"></a>老师寄语</h1><ul><li>坚持这两个字说起来总是很空</li><li>但是真正做到的大多都能成功<br>给自己竖个目标每天坚持，不要蒙头前进</li></ul><h2 id="一-、什么是go语言？"><a href="#一-、什么是go语言？" class="headerlink" title="一 、什么是go语言？"></a>一 、什么是go语言？</h2><p>编译型语言<br><img src="https://storage.tonlx.cn/images/2021///20210327191320.png"><br>google开源<br><img src="https://storage.tonlx.cn/images//2021/20210327191222.png"><br>21世纪的c语言<br><img src="https://storage.tonlx.cn/images/2021/20210327191445.png"></p><h2 id="二、go语言的特性"><a href="#二、go语言的特性" class="headerlink" title="二、go语言的特性"></a>二、go语言的特性</h2><ul><li>语法简洁</li><li>开发效率高</li><li>执行性能好<h2 id="三、如何学习go语言"><a href="#三、如何学习go语言" class="headerlink" title="三、如何学习go语言"></a>三、如何学习go语言</h2></li><li>与其它编程语言对比学习</li><li>多写多写多写代码</li><li>在工作中使用go语言</li><li>培养自主学习习惯</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 编程 </category>
+          
+          <category> Golang </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 编程 </tag>
+            
+            <tag> Golang </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>王者荣耀打野意识篇</title>
       <link href="2021/03/24/I%20Think/%E6%B8%B8%E6%88%8F/%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80%E6%89%93%E9%87%8E%E6%84%8F%E8%AF%86%E7%AF%87/"/>
       <url>2021/03/24/I%20Think/%E6%B8%B8%E6%88%8F/%E7%8E%8B%E8%80%85%E8%8D%A3%E8%80%80%E6%89%93%E9%87%8E%E6%84%8F%E8%AF%86%E7%AF%87/</url>
