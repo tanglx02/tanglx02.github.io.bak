@@ -4,6 +4,62 @@
   
     
     <entry>
+      <title>windows server 设置FTP域用户隔离</title>
+      <link href="2021/04/21/Windows/%E6%9C%8D%E5%8A%A1/windows%20server%20%E8%AE%BE%E7%BD%AEFTP%E5%9F%9F%E7%94%A8%E6%88%B7%E9%9A%94%E7%A6%BB/"/>
+      <url>2021/04/21/Windows/%E6%9C%8D%E5%8A%A1/windows%20server%20%E8%AE%BE%E7%BD%AEFTP%E5%9F%9F%E7%94%A8%E6%88%B7%E9%9A%94%E7%A6%BB/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、实验环境"><a href="#一、实验环境" class="headerlink" title="一、实验环境"></a>一、实验环境</h2><p>三台设备<br>2012 域控制器 ip 192.168.10.101<br>2008r2 FTP服务器 ip 192.168.10.104<br>win10 客户机 ip 192.168.10.107<br>实验说明</p><ol><li>将FTP服务器加入域控制器中，其完全域名为ftp.2021skills. com</li><li>建立ftp 站点ftp.2021kils.com站点主目录为 C:\ftp,不允许匿名登录，所有用户只具有读取和写入文件权限，FTP站点欢迎消息为:“欢迎访问网络搭建FTP服务器!”，并且用命令浏览文件时使用UNIX方式显示，日志文件记录到 C: \\ftp\LogFiles目录下;</li><li>为ftp1.2020skills.com设置域用户隔离，在域控制器中创建域用户ftpuser1和ftpuser2,密码为2020skills. com,设置两个用户主目录分别为网络文件夹\\ftp\ftpuser1、\\ftp\ftpuser2。<h2 id="二、实验部署"><a href="#二、实验部署" class="headerlink" title="二、实验部署"></a>二、实验部署</h2></li><li>在域控制器中添加用户，用户组，组织单元<br><img src="https://storage.tonlx.cn/images/2021/20210421155232.png"></li><li>在FTP服务器根目录中添加FTP的目录，与用户目录，并在各个目录中做好标记<br><img src="https://storage.tonlx.cn/images/2021/20210421155526.png"><br><img src="https://storage.tonlx.cn/images/2021/20210421155810.png"></li><li>建立站点ftp.2021skills. com，</li></ol><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这里我填写主机名最后无法访问，尝试只是用<span class="built_in">ip</span>最后成功</span><br></pre></td></tr></table></figure><p><img src="https://storage.tonlx.cn/images/2021/20210421160119.png"><br>4.不允许匿名登录，所有用户具有写入和读取权限</p><p><img src="https://storage.tonlx.cn/images/2021/20210421160226.png"><br>5.设置欢迎消息<br><img src="https://storage.tonlx.cn/images/2021/20210421160512.png"><br>6.设置用命令浏览文件时使用UNIX方式显示<br><img src="https://storage.tonlx.cn/images/2021/20210421160631.png"><br>7.文件记录到C:\ftp\logfiles目录下<br><img src="https://storage.tonlx.cn/images/2021/20210421160812.png"><br>8.将FTP服务器根目录共享并设置权限给用户组</p><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这里的共享权限只给到域中的<span class="keyword">ftp</span>组即可，防止samba访问越权</span><br></pre></td></tr></table></figure><p><img src="https://storage.tonlx.cn/images/2021/20210421161255.png"><br>9.回到域控制器中的域用户管理点击查看-高级功能<br><img src="https://storage.tonlx.cn/images/2021/20210421161617.png"><br>10.选择用户-属性-属性编辑器修改msIIS-FTPRoot和msIIS-FTPDir</p><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注意：<span class="attr">msIIS-FTPRoot=FTP根目录=ADFTProot、msIIS-FTPDir=用户主目录=用户名目录</span></span><br></pre></td></tr></table></figure><p><img src="https://storage.tonlx.cn/images/2021/20210421161806.png"><br>11.在FTP服务器中打开用户隔离<br><img src="https://storage.tonlx.cn/images/2021/20210421162923.png"><br>12.到win10客户端检测<br><img src="https://storage.tonlx.cn/images/2021/20210421162828.png"><br><img src="https://storage.tonlx.cn/images/2021/20210421163059.png"><br>这里可以看到，ftp不但做到了隔离同样具有写入权限<br><img src="https://storage.tonlx.cn/images/2021/20210421164122.png"><br>如果试图通过samba访问则无法成功<br><img src="https://storage.tonlx.cn/images/2021/20210421164244.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 1. Windows 2. 服务 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 3. FTP 4. Windows 5. 域 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>虚拟机克隆后无法使用网卡-centos</title>
+      <link href="2021/04/19/Linux/%E6%8A%98%E8%85%BE/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%85%8B%E9%9A%86%E5%90%8E%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8%E7%BD%91%E5%8D%A1-centos/"/>
+      <url>2021/04/19/Linux/%E6%8A%98%E8%85%BE/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%85%8B%E9%9A%86%E5%90%8E%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8%E7%BD%91%E5%8D%A1-centos/</url>
+      
+        <content type="html"><![CDATA[<h1 id="虚拟机克隆后无法使用网卡-centos"><a href="#虚拟机克隆后无法使用网卡-centos" class="headerlink" title="虚拟机克隆后无法使用网卡-centos"></a>虚拟机克隆后无法使用网卡-centos</h1><h2 id="一、centos6解决方法"><a href="#一、centos6解决方法" class="headerlink" title="一、centos6解决方法"></a>一、centos6解决方法</h2><p> 删除HAWADDR和UUID</p><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> sed -i <span class="string">&#x27;/UUID/d&#x27;</span> <span class="regexp">/etc/</span>sysconfig<span class="regexp">/network-scripts/</span>ifcfg-eth0</span><br><span class="line">sed -i <span class="string">&#x27;/HWADDR/d&#x27;</span> <span class="regexp">/etc/</span>sysconfig<span class="regexp">/network-scripts/</span>ifcfg-eth0</span><br></pre></td></tr></table></figure><p>清除网卡相关信息</p><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="regexp">/etc/udev</span><span class="regexp">/rules.d/</span><span class="number">70</span>-persistent-net.rules</span><br></pre></td></tr></table></figure><p>重启</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">reboot</span></span><br></pre></td></tr></table></figure><p><img src="https://storage.tonlx.cn//images/2021/20210419102030.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 折腾 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 问题 </tag>
+            
+            <tag> 折腾 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux防火墙-firewalld</title>
       <link href="2021/04/12/Linux/%E6%9C%8D%E5%8A%A1/images/Linux%E9%98%B2%E7%81%AB%E5%A2%99-firewalld/"/>
       <url>2021/04/12/Linux/%E6%9C%8D%E5%8A%A1/images/Linux%E9%98%B2%E7%81%AB%E5%A2%99-firewalld/</url>
