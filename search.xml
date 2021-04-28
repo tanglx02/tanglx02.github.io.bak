@@ -4,6 +4,130 @@
   
     
     <entry>
+      <title>linux中那些有意思的目录及文件</title>
+      <link href="2021/04/28/Linux/%E6%A6%82%E5%BF%B5/linux%E4%B8%AD%E9%82%A3%E4%BA%9B%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E7%9B%AE%E5%BD%95%E5%8F%8A%E6%96%87%E4%BB%B6/"/>
+      <url>2021/04/28/Linux/%E6%A6%82%E5%BF%B5/linux%E4%B8%AD%E9%82%A3%E4%BA%9B%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E7%9B%AE%E5%BD%95%E5%8F%8A%E6%96%87%E4%BB%B6/</url>
+      
+        <content type="html"><![CDATA[<h1 id="linux-中那些有意思的目录及文件"><a href="#linux-中那些有意思的目录及文件" class="headerlink" title="linux 中那些有意思的目录及文件"></a>linux 中那些有意思的目录及文件</h1><p>==文件 #9E9E9E==<br>==目录 #4CAF50==<br>==链接 #03A9F4==</p><table><thead><tr><th>目录</th><th>释义</th></tr></thead><tbody><tr><td>/var/log/==messages #9E9E9E==</td><td>系统日志</td></tr><tr><td>/etc/==localtime #9E9E9E==</td><td>系统时区</td></tr><tr><td>/etc/sysconfig/==clock #9E9E9E==</td><td>硬件时区</td></tr><tr><td>/usr/share/==zoneinfo #4CAF50==</td><td>各地区时区文件，配合系统时区</td></tr><tr><td>/etc/==services #9E9E9E==</td><td>服务与端口的关系，通常可以修改或是参考</td></tr><tr><td>/etc/==shells #9E9E9E==</td><td>系统中的shell</td></tr><tr><td>/etc/rc.d/==rc.local #9E9E9E==</td><td>开机加载的且执行的文档</td></tr><tr><td>/etc/rc.d/==init.d #4CAF50==</td><td>类似Windows注册表，给系统提供服务调用</td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 概念 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 概念 </tag>
+            
+            <tag> 目录 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux防火墙-iptables</title>
+      <link href="2021/04/27/Linux/%E6%9C%8D%E5%8A%A1/Linux%E9%98%B2%E7%81%AB%E5%A2%99-iptables/"/>
+      <url>2021/04/27/Linux/%E6%9C%8D%E5%8A%A1/Linux%E9%98%B2%E7%81%AB%E5%A2%99-iptables/</url>
+      
+        <content type="html"><![CDATA[<h2 id="策略与规则链"><a href="#策略与规则链" class="headerlink" title="策略与规则链"></a>策略与规则链</h2><p>防火墙会从上至下的顺序来读取配置的策略规则，在找到匹配项后就立即结束匹配工作并去执行匹配项中定义的行为（即放行或阻止）。如果在读取完所有的策略规则之后没有匹配项，就去执行默认的策略。一般而言，防火墙策略规则的设置有两种：一种是“通”（即放行），一种是“堵”（即阻止）。当防火墙的默认策略为拒绝时（堵），就要设置允许规则（通），否则谁都进不来；如果防火墙的默认策略为允许时，就要设置拒绝规则，否则谁都能进来，防火墙也就失去了防范的作用。</p><h2 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h2><table><thead><tr><th>参数</th><th>作用</th></tr></thead><tbody><tr><td>-P</td><td>设置默认策略</td></tr><tr><td>-F</td><td>清空规则链</td></tr><tr><td>-L</td><td>查看规则链</td></tr><tr><td>-A</td><td>在规则链的末尾加入新规则</td></tr><tr><td>-I</td><td>在规则链的头部加入新规则</td></tr><tr><td>-D</td><td>删除某一条规则</td></tr><tr><td>-s[!]</td><td>匹配来源地址IP/MASK，加叹号“!”表示除这个IP外</td></tr><tr><td>-d[!]</td><td>匹配目标地址</td></tr><tr><td>-i 网卡名称</td><td>封包所进入的那个网络接口，例如 eth0, lo 等接口。需与 INPUT 链配合</td></tr><tr><td>-o 网卡名称</td><td>封包所传出的那个网络接口，需与 OUTPUT 链配合</td></tr><tr><td>-p[!]</td><td>匹配协议，主要的封包格式有： tcp, udp, icmp 及 all</td></tr><tr><td>–sport[!]</td><td>匹配来源端口号</td></tr><tr><td>–dport[!]</td><td>匹配目标端口号</td></tr><tr><td>-j</td><td>后面接动作，主要的动作有接受(ACCEPT)、丢弃(DROP)、拒绝(REJECT)及记录(LOG)</td></tr><tr><td>==加！代表除此之外 #F44336==</td><td></td></tr><tr><td>格式</td><td></td></tr></tbody></table><figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">[root@www ~]</span># iptables <span class="comment">[-PFLAI 链名]</span> <span class="comment">[-io 网络接口]</span> <span class="comment">[-s 来源IP/网域]</span> <span class="comment">[-d 目标IP/网域]</span> <span class="comment">[-p 协议]</span> <span class="comment">[-dport 目标端口]</span> <span class="comment">[-sport 来源端口]</span> <span class="comment">[ -j ACCEPT|DROP|REJECT|LOG]</span></span><br></pre></td></tr></table></figure><p>==链名 #F44336==-接口–网域-协议-端口-==规则 #F44336==</p><h2 id="四表五链"><a href="#四表五链" class="headerlink" title="四表五链"></a>四表五链</h2><p>四表:filter,nat,mangle,raw，默认表是filter（没有指定表的时候就是filter表）。表的处理优先级：raw&gt;mangle&gt;nat&gt;filter。</p><pre><code>      filter：一般的过滤功能      nat:用于nat功能（端口映射，地址映射等）      mangle:用于对特定数据包的修改      raw:有限级最高，设置raw时一般是为了不再让iptables做数据包的链接跟踪处理，提高性能 RAW 表只使用在PREROUTING链和OUTPUT链上,因为优先级最高，从而可以对收到的数据包在连接跟踪前进行处理。一但用户使用了RAW表,在某个链 上,RAW表处理完后,将跳过NAT表和 ip_conntrack处理,即不再做地址转换和数据包的链接跟踪处理了.     RAW表可以应用在那些不需要做nat的情况下，以提高性能。如大量访问的web服务器，可以让80端口不再让iptables做数据包的链接跟踪处理，以提高用户的访问速度。</code></pre><p>五链：PREROUTING,INPUT,FORWARD,OUTPUT,POSTROUTING。</p><pre><code>       PREROUTING:数据包进入路由表之前       INPUT:通过路由表后目的地为本机       FORWARD:通过路由表后，目的地不为本机       OUTPUT:由本机产生，向外转发       POSTROUTIONG:发送到网卡接口之前</code></pre><h2 id="四规则"><a href="#四规则" class="headerlink" title="四规则"></a>四规则</h2><p>ACCEPT<br>允许<br>DROP<br>拒绝<br>REJECT<br>拒绝且回复<br>LOG<br>记录到系统日志，/var/log/messages</p><h2 id="iptables-save"><a href="#iptables-save" class="headerlink" title="iptables-save"></a>iptables-save</h2><p>备份</p><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root<span class="variable">@localhost</span> ~]<span class="comment"># iptables-save &gt;/var/bak/iptables/iptables.bak  </span></span><br></pre></td></tr></table></figure><p>恢复</p><pre><code>[root@localhost ~]# iptables-restore &lt;/var/bak/iptables/iptables.bak    </code></pre><p>修改</p><h2 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h2><p><a href="https://www.cnblogs.com/paul8339/p/6515410.html">博客园</a><br><a href="https://www.linuxprobe.com/chapter-08.html">Linux就该这么学</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 服务 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 服务 </tag>
+            
+            <tag> 防火墙 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>centos搭建时间服务器</title>
+      <link href="2021/04/27/Linux/%E6%9C%8D%E5%8A%A1/centos%E6%90%AD%E5%BB%BA%E6%97%B6%E9%97%B4%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+      <url>2021/04/27/Linux/%E6%9C%8D%E5%8A%A1/centos%E6%90%AD%E5%BB%BA%E6%97%B6%E9%97%B4%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+      
+        <content type="html"><![CDATA[<h2 id="搭建chronyd服务"><a href="#搭建chronyd服务" class="headerlink" title="搭建chronyd服务"></a>搭建chronyd服务</h2><p>服务端</p><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum install -<span class="keyword">y</span> chrony  //安装ntp服务</span><br><span class="line">firewall-cmd --zone=public --<span class="built_in">add</span>-service=ntp --permanent  //开放ntp</span><br><span class="line">systemctl restart firewalld  //重启防火墙</span><br><span class="line"><span class="keyword">vi</span> /etc/chrony.<span class="keyword">conf</span>  //编辑chronyd服务的配置文件</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><img src="https://storage.tonlx.cn/images/2021/20210427091447.png"><br>第一部分：允许那个网段的ip获取时间<br>第二部分：单网路时间不可用时，采用本地时间</p><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">restart</span> chronyd //重启服务</span><br></pre></td></tr></table></figure><p>客户端</p><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum install -<span class="keyword">y</span> chrony  //安装ntp服务</span><br><span class="line">firewall-cmd --zone=public --<span class="built_in">add</span>-service=ntp --permanent  //开放ntp</span><br><span class="line">systemctl restart firewalld  //重启防火墙</span><br><span class="line"><span class="keyword">vi</span> /etc/chrony.<span class="keyword">conf</span>  //编辑chronyd服务的配置文件</span><br><span class="line"></span><br></pre></td></tr></table></figure><p><img src="https://storage.tonlx.cn/images/2021/20210427091855.png"><br>采用192.168.10.200 这台服务器同步时间，iburst是优先</p><figure class="highlight maxima"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">restart</span> chronyd  //重启chronyd服务</span><br><span class="line">chronyc sources //查看同步信息</span><br></pre></td></tr></table></figure><p><img src="https://storage.tonlx.cn/images/2021/20210427092236.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 服务 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 服务 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux修改时间以及时区</title>
+      <link href="2021/04/25/Windows/%E6%9C%8D%E5%8A%A1/%E6%97%B6%E9%97%B4%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+      <url>2021/04/25/Windows/%E6%9C%8D%E5%8A%A1/%E6%97%B6%E9%97%B4%E6%9C%8D%E5%8A%A1%E5%99%A8/</url>
+      
+        <content type="html"><![CDATA[<h2 id="知识"><a href="#知识" class="headerlink" title="知识"></a>知识</h2><p>1.关于时间目录<br>/usr/share/zoneinfo //关于各个时区的的文件用于ln -fs到/etc/localtime中的<br>/etc/localtime    //硬件时区<br>/etc/sysconfig/clock //系统时区<br>2.修改时间及时区的工具<br>date    //修改系统时间以及系统时区<br>hwclock        //修改硬件时间<br>timedatectl //centos7引入的工具</p><h2 id="一、date时间设置"><a href="#一、date时间设置" class="headerlink" title="一、date时间设置"></a>一、date时间设置</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#date</span> <span class="comment">//显示当前日期</span></span><br><span class="line"><span class="selector-id">#date</span> -R <span class="comment">//显示时区</span></span><br><span class="line"><span class="selector-id">#date</span> -s <span class="number">20061010</span> <span class="comment">//设置成20061010，这样会把具体时间设置成空00:00:00</span></span><br><span class="line"><span class="selector-id">#date</span> -s <span class="number">12</span>:<span class="number">23</span>:<span class="number">23</span> <span class="comment">//设置具体时间，不会对日期做更改</span></span><br><span class="line"><span class="selector-id">#date</span> -s <span class="string">&quot;12:12:23 2006-10-10″ //这样可以设置全部时间</span></span><br><span class="line"><span class="string">#hwclock //显示硬件时间</span></span><br><span class="line"><span class="string">#hwclock -s //将硬件时间写入到系统时间</span></span><br><span class="line"><span class="string">#hwclock -w //将系统时间写入到硬件时间</span></span><br></pre></td></tr></table></figure><h2 id="二、centos6修改时区"><a href="#二、centos6修改时区" class="headerlink" title="二、centos6修改时区"></a>二、centos6修改时区</h2><figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">显示硬件时间</span><br><span class="line"><span class="meta">#hwclock </span></span><br><span class="line">显示系统时间</span><br><span class="line"><span class="meta">#date -R</span></span><br><span class="line">查看格林威治时间</span><br><span class="line"><span class="meta">#date -u</span></span><br></pre></td></tr></table></figure><p>如果时间正确，时区正确改时区即可</p><p>系统时区</p><figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">#vi /etc/sysconfig/clock </span></span><br></pre></td></tr></table></figure><p><img src="https://storage.tonlx.cn//images/2021/20210426103235.png"><br>硬件时区</p><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ln -sf <span class="regexp">/usr/</span>share<span class="regexp">/zoneinfo/</span>Asia<span class="regexp">/Shanghai /</span>etc/localtime</span><br><span class="line">hwclock --utc</span><br></pre></td></tr></table></figure><h2 id="二、centos7修改时区"><a href="#二、centos7修改时区" class="headerlink" title="二、centos7修改时区"></a>二、centos7修改时区</h2><p>系统时区</p><figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># timedatectl  set-timezone Asia/Shanghai</span></span><br><span class="line"><span class="comment">#timedatectl set-timezone UTC</span></span><br></pre></td></tr></table></figure><p>硬件时区</p><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -sf <span class="regexp">/usr/</span>share<span class="regexp">/zoneinfo/</span>Asia<span class="regexp">/Shanghai /</span>etc/localtime</span><br></pre></td></tr></table></figure><p>使用网络时间</p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#yum</span> install ntp</span><br><span class="line"><span class="selector-id">#ntpdate</span> pool<span class="selector-class">.ntp</span>.org</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 服务 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 服务 </tag>
+            
+            <tag> NTP </tag>
+            
+            <tag> chrony </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>windows server 设置FTP域用户隔离</title>
       <link href="2021/04/21/Windows/%E6%9C%8D%E5%8A%A1/windows%20server%20%E8%AE%BE%E7%BD%AEFTP%E5%9F%9F%E7%94%A8%E6%88%B7%E9%9A%94%E7%A6%BB/"/>
       <url>2021/04/21/Windows/%E6%9C%8D%E5%8A%A1/windows%20server%20%E8%AE%BE%E7%BD%AEFTP%E5%9F%9F%E7%94%A8%E6%88%B7%E9%9A%94%E7%A6%BB/</url>
@@ -13,14 +137,20 @@
       
       <categories>
           
-          <category> 1. Windows 2. 服务 </category>
+          <category> Windows </category>
+          
+          <category> 服务 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 3. FTP 4. Windows 5. 域 </tag>
+            <tag> Windows </tag>
+            
+            <tag> FTP </tag>
+            
+            <tag> 域 </tag>
             
         </tags>
       
@@ -128,7 +258,7 @@
       <link href="2021/04/08/Linux/%E5%91%BD%E4%BB%A4/linux%20%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/"/>
       <url>2021/04/08/Linux/%E5%91%BD%E4%BB%A4/linux%20%E5%9F%BA%E6%9C%AC%E5%91%BD%E4%BB%A4/</url>
       
-        <content type="html"><![CDATA[<table><thead><tr><th>命令</th><th>功能</th></tr></thead><tbody><tr><td><a href="https://www.linuxcool.com/fdisk">fdisk</a></td><td>硬盘配置工具</td></tr><tr><td><a href="https://www.linuxcool.com/partprobe">partprobe</a></td><td>同步磁盘</td></tr><tr><td><a href="https://www.linuxcool.com/mkfs">mkfs</a>.</td><td>格式化硬盘</td></tr><tr><td><a href="https://www.linuxcool.com/mkswap">mkswap</a></td><td>格式化swap</td></tr><tr><td><a href="https://www.linuxcool.com/swapon">swapon</a></td><td>添加swap分区</td></tr><tr><td><a href="https://www.linuxcool.com/swapoff">swapoff</a></td><td>关闭swap分区</td></tr><tr><td><a href="https://www.linuxcool.com/ln">ln</a></td><td>创建链接</td></tr><tr><td><a href="https://www.linuxcool.com/mdadm">mdadm</a></td><td>创建raid</td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></tbody></table>]]></content>
+        <content type="html"><![CDATA[<table><thead><tr><th>命令</th><th>功能</th></tr></thead><tbody><tr><td><a href="https://www.linuxcool.com/fdisk">fdisk</a></td><td>硬盘配置工具</td></tr><tr><td><a href="https://www.linuxcool.com/partprobe">partprobe</a></td><td>同步磁盘</td></tr><tr><td><a href="https://www.linuxcool.com/mkfs">mkfs</a>.</td><td>格式化硬盘</td></tr><tr><td><a href="https://www.linuxcool.com/mkswap">mkswap</a></td><td>格式化swap</td></tr><tr><td><a href="https://www.linuxcool.com/swapon">swapon</a></td><td>添加swap分区</td></tr><tr><td><a href="https://www.linuxcool.com/swapoff">swapoff</a></td><td>关闭swap分区</td></tr><tr><td><a href="https://www.linuxcool.com/ln">ln</a></td><td>创建链接</td></tr><tr><td><a href="https://www.linuxcool.com/mdadm">mdadm</a></td><td>创建raid</td></tr><tr><td><a href="https://www.linuxcool.com/nmtui">nmtui</a></td><td>tui式修改网络</td></tr><tr><td><a href="https://www.linuxcool.com/hwclock">hwclock</a></td><td>配置硬件时间</td></tr><tr><td><a href="https://www.runoob.com/linux/linux-comm-date.html">date</a></td><td>配置系统时间</td></tr><tr><td><a href="https://www.linuxcool.com/crontab">crontab</a></td><td>定时执行任务</td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></tbody></table>]]></content>
       
       
       <categories>
