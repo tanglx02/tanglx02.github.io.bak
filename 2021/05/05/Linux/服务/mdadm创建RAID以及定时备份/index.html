@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Linux防火墙-firewalld | 四维先森的博客_四维先森(汤龙祥)_CSDN博客-C语言教程,笔记,linux领域博主</title>
-  <meta name="keywords" content=" Linux , 服务 , firewalld , 防火墙 ">
-  <meta name="description" content="Linux防火墙-firewalld | 四维先森的博客_四维先森(汤龙祥)_CSDN博客-C语言教程,笔记,linux领域博主">
+  <title>mdadm创建RAID以及定时备份 | 四维先森的博客_四维先森(汤龙祥)_CSDN博客-C语言教程,笔记,linux领域博主</title>
+  <meta name="keywords" content=" Linux , 服务 , RAID , crontab , mdadm ">
+  <meta name="description" content="mdadm创建RAID以及定时备份 | 四维先森的博客_四维先森(汤龙祥)_CSDN博客-C语言教程,笔记,linux领域博主">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="## 页面未找到！">
 <meta property="og:type" content="website">
@@ -291,7 +291,7 @@
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="41">
-<input type="hidden" id="yelog_site_word_count" value="14.3k">
+<input type="hidden" id="yelog_site_word_count" value="13.9k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -359,7 +359,7 @@
             </li>
         
             <li class="article-tag-list-item">
-                <i class="iconfont icon-tag"></i><a>firewalld</a>
+                <i class="iconfont icon-tag"></i><a>crontab</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -395,6 +395,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>mdadm</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>NTP</a>
             </li>
         
@@ -404,6 +408,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>oneindex</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>RAID</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -585,6 +593,14 @@
             <span class="post-date" title="2020-11-08 13:05:20">2020/11/08</span>
         </a>
         
+        <a  class="全部文章 Linux 服务 "
+           href="/2021/05/05/Linux/%E6%9C%8D%E5%8A%A1/mdadm%E5%88%9B%E5%BB%BARAID%E4%BB%A5%E5%8F%8A%E5%AE%9A%E6%97%B6%E5%A4%87%E4%BB%BD/"
+           data-tag="Linux,服务,RAID,crontab,mdadm"
+           data-author="" >
+            <span class="post-title" title="mdadm创建RAID以及定时备份">mdadm创建RAID以及定时备份</span>
+            <span class="post-date" title="2021-05-05 11:52:05">2021/05/05</span>
+        </a>
+        
         <a  class="全部文章 Linux 折腾 "
            href="/2021/05/01/Linux/%E6%8A%98%E8%85%BE/centos%E5%8D%95%E7%BD%91%E5%8D%A1%E5%A4%9Aip/"
            data-tag="Linux,服务,折腾,网卡"
@@ -687,14 +703,6 @@
            data-author="" >
             <span class="post-title" title="虚拟机克隆后无法使用网卡-centos">虚拟机克隆后无法使用网卡-centos</span>
             <span class="post-date" title="2021-04-19 10:17:59">2021/04/19</span>
-        </a>
-        
-        <a  class="全部文章 Linux 服务 "
-           href="/2021/04/12/Linux/%E6%9C%8D%E5%8A%A1/images/Linux%E9%98%B2%E7%81%AB%E5%A2%99-firewalld/"
-           data-tag="Linux,服务,firewalld,防火墙"
-           data-author="" >
-            <span class="post-title" title="Linux防火墙-firewalld">Linux防火墙-firewalld</span>
-            <span class="post-date" title="2021-04-12 14:46:22">2021/04/12</span>
         </a>
         
         <a  class="全部文章 Linux 服务 "
@@ -922,9 +930,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-Linux/服务/images/Linux防火墙-firewalld" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-Linux/服务/mdadm创建RAID以及定时备份" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">Linux防火墙-firewalld</h1>
+        <h1 class="article-title">mdadm创建RAID以及定时备份</h1>
     
     <div class="article-meta">
         
@@ -948,21 +956,23 @@
             
             <a class="color3">服务</a>
             
-            <a class="color5">firewalld</a>
+            <a class="color5">RAID</a>
             
-            <a class="color4">防火墙</a>
+            <a class="color3">crontab</a>
+            
+            <a class="color1">mdadm</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-04-12 15:50:06'>2021-04-12 14:46</time>
+            发布时间 : <time class="date" title='最后更新: 2021-05-05 11:59:14'>2021-05-05 11:52</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:432</span>
+        <span>字数:83</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -992,7 +1002,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E9%98%B2%E7%81%AB%E5%A2%99-firewalld"><span class="toc-text">Linux防火墙-firewalld</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E6%9F%A5%E7%9C%8B%E5%91%BD%E4%BB%A4"><span class="toc-text">防火墙查看命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99%E9%85%8D%E7%BD%AE%E7%AD%96%E7%95%A5"><span class="toc-text">防火墙配置策略</span></a></li></ol></li></ol>
+        
     
 <style>
     .left-col .switch-btn,
@@ -1008,59 +1018,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Linux防火墙-firewalld"><a href="#Linux防火墙-firewalld" class="headerlink" title="Linux防火墙-firewalld"></a>Linux防火墙-firewalld</h1><p>自centos7以后的Linux版本，firewalld工具已经取代iptables工具，在Linux中防火墙工具只是一个工具，而firewalld服务只是将配置好的服务交给内核层面的nftables包过滤框架来处理。<br>相对于传统的Linux防火墙，firewalld引入了zone，即区域的概念，不同的区域适用于不同的环境，可以随时切换区域。</p>
-<h2 id="防火墙查看命令"><a href="#防火墙查看命令" class="headerlink" title="防火墙查看命令"></a>防火墙查看命令</h2><p>1）查看防火墙版本</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-<span class="keyword">cmd</span><span class="bash"> --version</span></span><br></pre></td></tr></table></figure>
-<p>2）查看防火墙状态</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-<span class="keyword">cmd</span><span class="bash"> --state</span></span><br></pre></td></tr></table></figure>
+        <p>创建RAID1</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@server1</span> ~]<span class="comment"># mdadm -Cv /dev/md0 -a yes -l 1 -n 2 /dev/sd[b,c]</span></span><br></pre></td></tr></table></figure>
 
-<p>3）查看防火墙全部信息</p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --<span class="keyword">list</span>-<span class="keyword">all</span></span><br></pre></td></tr></table></figure>
-<p>4）查看防火墙已打开端口</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-<span class="keyword">cmd</span><span class="bash"> --list-port</span></span><br></pre></td></tr></table></figure>
-<p>5）查看防火墙已打开服务</p>
-<figure class="highlight thrift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --<span class="keyword">list</span>-<span class="class"><span class="keyword">service</span></span></span><br></pre></td></tr></table></figure>
-<p>6）查看防护墙预定义服务</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-<span class="keyword">cmd</span><span class="bash"> --get-services</span></span><br></pre></td></tr></table></figure>
-
-<p>7）查看防火墙可用区域</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-<span class="keyword">cmd</span><span class="bash"> --get-zones</span></span><br></pre></td></tr></table></figure>
-<p>8）查看防护墙正在使用的区域</p>
-<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --<span class="keyword">get</span>-<span class="keyword">default</span>-zone</span><br></pre></td></tr></table></figure>
-
-<h2 id="防火墙配置策略"><a href="#防火墙配置策略" class="headerlink" title="防火墙配置策略"></a>防火墙配置策略</h2><p>1）设置默认使用区域</p>
-<figure class="highlight vbscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --<span class="keyword">set</span>-<span class="keyword">default</span>-zone=&lt;区域名称&gt;</span><br></pre></td></tr></table></figure>
-
-<p>2）开放、移去某个端口。<br>开放80端口</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd <span class="params">--zone=public</span> <span class="params">--add-port=80/tcp</span> <span class="params">--permanent</span></span><br></pre></td></tr></table></figure>
-
-<p>移去80端口</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd <span class="params">--zone=public</span> <span class="params">--remove-port=80/tcp</span> <span class="params">--permanent</span></span><br></pre></td></tr></table></figure>
-
-<p>3）开放、移去范围端口。</p>
-<p>开放5000-5500之间的端口</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd <span class="params">--zone=public</span> <span class="params">--add-port=5000-5500/tcp</span> <span class="params">--permanent</span></span><br></pre></td></tr></table></figure>
-
-<p>移去5000-5500之间的端口</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd <span class="params">--zone=public</span> <span class="params">--remove-port=5000-5500/tcp</span> <span class="params">--permanent</span></span><br></pre></td></tr></table></figure>
-
-<p>4）开放、移去服务。<br> 开放ftp服务</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd <span class="params">--zone=public</span> <span class="params">--add-service=ftp</span> <span class="params">--permanent</span></span><br></pre></td></tr></table></figure>
-
-<p>移去http服务</p>
-<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd <span class="params">--zone=public</span> <span class="params">--remove-service=ftp</span> <span class="params">--permanent</span></span><br></pre></td></tr></table></figure>
-
-<p>5）重新加载防火墙配置（修改配置后要重新加载防火墙配置或重启防火墙服务）。</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-<span class="keyword">cmd</span><span class="bash"> --reload</span></span><br></pre></td></tr></table></figure>
-
-<p>6）设置开机时启用、禁用防火墙服务。<br>启用服务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> firewalld</span><br></pre></td></tr></table></figure>
-
-<p>禁用服务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">disable</span> firewalld</span><br></pre></td></tr></table></figure>
-
-
-
+<p>设置某周5晚24点开始把第三块硬盘加入备份</p>
+<figure class="highlight dts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@server1 ~]<span class="meta"># crontab -e</span></span><br><span class="line">加入以下内容，备份时间为<span class="number">5</span>小时</span><br><span class="line">* <span class="number">0</span> * * <span class="number">5</span> <span class="meta-keyword">/sbin/</span>mdadm <span class="meta-keyword">/dev/</span>md0 -a <span class="meta-keyword">/dev/</span>sdd  加入到md0中</span><br><span class="line">* <span class="number">5</span> * * <span class="number">5</span> <span class="meta-keyword">/sbin/</span>mdadm <span class="meta-keyword">/dev/</span>md0 -r <span class="meta-keyword">/dev/</span>sdd  移除</span><br></pre></td></tr></table></figure>
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 tonlx@foxmail.com </span>
     </div>
