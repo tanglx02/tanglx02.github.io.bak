@@ -134,7 +134,7 @@
 
 
 <ul>
-    <li><div class="all active" data-rel="全部文章">全部文章<small>(46)</small></div></li>
+    <li><div class="all active" data-rel="全部文章">全部文章<small>(47)</small></div></li>
     
         
             
@@ -162,7 +162,7 @@
     
         
             
-            <li><div data-rel="Linux"><i class="fold iconfont icon-right"></i>Linux<small>(19)</small></div>
+            <li><div data-rel="Linux"><i class="fold iconfont icon-right"></i>Linux<small>(20)</small></div>
                 
                     <ul class="sub hide">
                         
@@ -174,7 +174,7 @@
                             
                         </li>
                             
-                        <li><div data-rel="Linux<--->服务">服务<small>(11)</small></div>
+                        <li><div data-rel="Linux<--->服务">服务<small>(12)</small></div>
                             
                         </li>
                             
@@ -298,8 +298,8 @@
     </div>
     <div><a class="about  hasFriend  site_url"  href="/about">关于</a><a style="width: 50%"  class="friends">友链</a></div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="46">
-<input type="hidden" id="yelog_site_word_count" value="15.3k">
+<input type="hidden" id="yelog_site_posts_number" value="47">
+<input type="hidden" id="yelog_site_word_count" value="15.8k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -368,6 +368,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>crontab</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>firewalld</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -750,6 +754,14 @@
         </a>
         
         <a  class="全部文章 Linux 服务 "
+           href="/2021/04/12/Linux/%E6%9C%8D%E5%8A%A1/Linux%E9%98%B2%E7%81%AB%E5%A2%99-firewalld/"
+           data-tag="Linux,服务,firewalld,防火墙"
+           data-author="" >
+            <span class="post-title" title="Linux防火墙-firewalld">Linux防火墙-firewalld</span>
+            <span class="post-date" title="2021-04-12 14:46:22">2021/04/12</span>
+        </a>
+        
+        <a  class="全部文章 Linux 服务 "
            href="/2021/04/08/Linux/%E6%9C%8D%E5%8A%A1/Linux%20%E5%88%9B%E5%BB%BALVM%E5%8D%B7/"
            data-tag="Linux,服务,LVM"
            data-author="" >
@@ -1007,12 +1019,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2021-04-28 11:11:49'>2021-04-27 14:19</time>
+            发布时间 : <time class="date" title='最后更新: 2021-05-13 20:58:05'>2021-04-27 14:19</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:90</span>
+        <span>字数:162</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -1042,7 +1054,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Linux%E5%BC%80%E5%90%AFtelnet"><span class="toc-text">Linux开启telnet</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%96%87%E7%AB%A0"><span class="toc-text">相关文章</span></a></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Centos6%E5%90%AFtelnet"><span class="toc-text">Centos6启telnet</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%B8%E5%85%B3%E6%96%87%E7%AB%A0"><span class="toc-text">相关文章</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Cetnos7%E5%BC%80%E5%90%AFtelnet"><span class="toc-text">Cetnos7开启telnet</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -1058,7 +1070,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="Linux开启telnet"><a href="#Linux开启telnet" class="headerlink" title="Linux开启telnet"></a>Linux开启telnet</h1><p>安装</p>
+        <h1 id="Centos6启telnet"><a href="#Centos6启telnet" class="headerlink" title="Centos6启telnet"></a>Centos6启telnet</h1><p>安装</p>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@ntp1</span> ~]<span class="comment"># yum install telnet telnet-server xinetd</span></span><br></pre></td></tr></table></figure>
 <p>开启xinetd自启动和启动xinetd</p>
 <figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@ntp1</span> ~]<span class="comment"># chkconfig xinetd on</span></span><br><span class="line">[root<span class="variable">@ntp1</span> ~]<span class="comment"># service xinetd restart</span></span><br></pre></td></tr></table></figure>
@@ -1068,7 +1080,15 @@
 <p>如果要做相关的配置可参考模板</p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">cat</span> /usr/share/doc/xinetd-2.3.14/<span class="keyword">sample</span>.<span class="keyword">conf</span> </span><br></pre></td></tr></table></figure>
 
-<h2 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h2>
+<h2 id="相关文章"><a href="#相关文章" class="headerlink" title="相关文章"></a>相关文章</h2><h2 id="Cetnos7开启telnet"><a href="#Cetnos7开启telnet" class="headerlink" title="Cetnos7开启telnet"></a>Cetnos7开启telnet</h2><p>安装</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@ntp1</span> ~]<span class="comment"># yum install telnet telnet-server xinetd</span></span><br></pre></td></tr></table></figure>
+<p>开启xinetd自启动和启动xinetd</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root<span class="variable">@ntp1</span> ~]<span class="comment"># systemctl enable xinetd</span></span><br><span class="line">[root<span class="variable">@ntp1</span> ~]<span class="comment"># systemctl start xinetd</span></span><br></pre></td></tr></table></figure>
+
+<p>建立telnet文件</p>
+<figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@tonlx ~]<span class="comment"># vi /etc/xinetd.d/telnet </span></span><br><span class="line">加入以下内容</span><br><span class="line"></span><br><span class="line">service telnet</span><br><span class="line">&#123;</span><br><span class="line"> <span class="attr">flags</span>           = REUSE</span><br><span class="line"> <span class="attr">socket_type</span>     = stream</span><br><span class="line"> <span class="attr">wait</span>            = no</span><br><span class="line"> <span class="attr">user</span>            = root</span><br><span class="line"> <span class="attr">server</span>          =/usr/sbin/<span class="keyword">in</span>.telnetd</span><br><span class="line"> log_on_failure  += USERID</span><br><span class="line"><span class="attr">disable</span>         = no</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 tonlx@foxmail.com </span>
     </div>
