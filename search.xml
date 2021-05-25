@@ -4,6 +4,66 @@
   
     
     <entry>
+      <title>Linux如何替代Windows</title>
+      <link href="2021/05/25/Linux/%E6%8A%98%E8%85%BE/Linux%E5%A6%82%E4%BD%95%E6%9B%BF%E4%BB%A3Windows/"/>
+      <url>2021/05/25/Linux/%E6%8A%98%E8%85%BE/Linux%E5%A6%82%E4%BD%95%E6%9B%BF%E4%BB%A3Windows/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>循序渐进收集Linux下好用的软件，学习它并替代Windows下的各类软件</p><h2 id="视频图片"><a href="#视频图片" class="headerlink" title="视频图片"></a>视频图片</h2><p>1.kdenlive 视频剪辑软件，<a href="https://kdenlive.org/zh/features-zh/">链接</a><br>2.图片编辑软件，<a href="https://www.gimp.org/">链接</a></p><h2 id="开发设计"><a href="#开发设计" class="headerlink" title="开发设计"></a>开发设计</h2><h2 id="办公学习"><a href="#办公学习" class="headerlink" title="办公学习"></a>办公学习</h2><h2 id="影音娱乐"><a href="#影音娱乐" class="headerlink" title="影音娱乐"></a>影音娱乐</h2><h2 id="小工具"><a href="#小工具" class="headerlink" title="小工具"></a>小工具</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 折腾 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 折腾 </tag>
+            
+            <tag> 替代Windows </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Windows10添加小鹤双拼方案</title>
+      <link href="2021/05/22/%E6%8A%98%E8%85%BE/Windows10%E6%B7%BB%E5%8A%A0%E5%B0%8F%E9%B9%A4%E5%8F%8C%E6%8B%BC%E6%96%B9%E6%A1%88/"/>
+      <url>2021/05/22/%E6%8A%98%E8%85%BE/Windows10%E6%B7%BB%E5%8A%A0%E5%B0%8F%E9%B9%A4%E5%8F%8C%E6%8B%BC%E6%96%B9%E6%A1%88/</url>
+      
+        <content type="html"><![CDATA[<p><a href="https://storage-cn.github.io/images/2021/%E5%B0%8F%E9%B9%A4%E5%8F%8C%E6%8B%BC.reg">注册表</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 折腾 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 折腾 </tag>
+            
+            <tag> 输入法 </tag>
+            
+            <tag> 小鹤 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>2021竞赛总结</title>
       <link href="2021/05/16/I%20Think/%E8%A7%84%E5%88%92/2021%E7%AB%9E%E8%B5%9B%E6%80%BB%E7%BB%93/"/>
       <url>2021/05/16/I%20Think/%E8%A7%84%E5%88%92/2021%E7%AB%9E%E8%B5%9B%E6%80%BB%E7%BB%93/</url>
@@ -89,7 +149,7 @@
       <link href="2021/05/09/%E6%8A%80%E8%83%BD%E5%A4%A7%E8%B5%9B/samba/"/>
       <url>2021/05/09/%E6%8A%80%E8%83%BD%E5%A4%A7%E8%B5%9B/samba/</url>
       
-        <content type="html"><![CDATA[<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="samba服务配置"><a href="#samba服务配置" class="headerlink" title="samba服务配置"></a>samba服务配置</h2><p>1.安装</p><p><code>yum install samba -y</code></p><p>2.创建用户</p><p><code>useradd -s /sbin/nologin user1</code>   //创建user1用户</p><p><code>useradd -s /sbin/nologin user2</code>  //创建user2用户</p><p><code>useradd -s /sbin/nologin user3</code>  //创建user3用户</p><p><code>smbpasswd -a user1</code>  //创建samba用户user1用户</p><p><code>smbpasswd -a user2</code>  //创建samba用户user2用户</p><p><code>smbpasswd -a user3</code>  //创建samba用户user3用户</p><p>3.创建本地目录</p><p><code>mkdir -p /opt/a&#123;1,2,3&#125;</code> //创建目录分别为/opt/a1，/opt/a2，/opt/a3</p><p><code>mkdir -p /opt/public</code>  //创建目录public</p><p><code>chmod -R 777 /opt/</code> //赋予权限777</p><p>4.配置共享</p><p><code>vim /etc/samba/smb.conf</code>   //进入samba的配置文件</p><p><img src="images/image-20210507193630186.png" alt="image-20210507193630186"></p><p>添加共享目录</p><h2 id="samba权限配置"><a href="#samba权限配置" class="headerlink" title="samba权限配置"></a>samba权限配置</h2><p>1.创建用户组</p><p><code>groupadd manager</code></p><p><code>usermod -G manager user1</code></p><p>2.编辑samba配置文件</p><p><code>vim /etc/samba/smb.conf</code></p><p><code>[staff1]  //共享名称</code></p><p><code>path = /opt/a1  // 共享路径</code></p><p><code>write list = user1 // 允许user1有写入权限</code></p><p><code>read list = user1  //使user1有读写权限</code></p><p><code>valid users = user1  //使user1对staff1有访问权限</code></p><p><img src="images/image-20210507194239538.png" alt="image-20210507194239538"></p><p>3.用户映射</p><p><code>vim /etc/samba/smb.conf</code>   //进入samba的配置文件</p><p>58 行左右加入</p><p><code>username map = /etc/samba/smbusers</code> 用户映射文件</p><p><code>vim /etc/samba/smbuser</code> //配置用户映射文件，加入以下内容</p><p><code>user1= tony</code></p><p><code>user2 = tom</code></p><p>4.测试登录</p><p><code>yum install samba-client -y  //安装客户端</code></p><p><code>smbclient -L 10.100.100.102 -U tony</code> 查看user1的共享目录</p><h2 id="限制上传文件"><a href="#限制上传文件" class="headerlink" title="限制上传文件"></a>限制上传文件</h2><p><code>vim /etc/samba/smb.conf    //编辑smb配置文件</code></p><p>对需要限制的共享目录加入</p><p><code>veto files = /*.exe/*.bmp/    //用来禁止上传可执行（.exe）及位图（.bmp）文件。</code></p><p><code>veto files = /*root*/    //用来禁止上传包含root关键字的文件或目录。</code></p>]]></content>
+        <content type="html"><![CDATA[<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="samba服务配置"><a href="#samba服务配置" class="headerlink" title="samba服务配置"></a>samba服务配置</h2><p>1.安装</p><p><code>yum install samba -y</code></p><p>2.创建用户</p><p><code>useradd -s /sbin/nologin user1</code>   //创建user1用户</p><p><code>useradd -s /sbin/nologin user2</code>  //创建user2用户</p><p><code>useradd -s /sbin/nologin user3</code>  //创建user3用户</p><p><code>smbpasswd -a user1</code>  //创建samba用户user1用户</p><p><code>smbpasswd -a user2</code>  //创建samba用户user2用户</p><p><code>smbpasswd -a user3</code>  //创建samba用户user3用户</p><p>3.创建本地目录</p><p><code>mkdir -p /opt/a&#123;1,2,3&#125;</code> //创建目录分别为/opt/a1，/opt/a2，/opt/a3</p><p><code>mkdir -p /opt/public</code>  //创建目录public</p><p><code>chmod -R 777 /opt/</code> //赋予权限777</p><p>4.配置共享</p><p><code>vim /etc/samba/smb.conf</code>   //进入samba的配置文件</p><p><img src="https://storage.tonlx.cn/images/2021/image-20210507193630186.png"></p><p>添加共享目录</p><h2 id="samba权限配置"><a href="#samba权限配置" class="headerlink" title="samba权限配置"></a>samba权限配置</h2><p>1.创建用户组</p><p><code>groupadd manager</code></p><p><code>usermod -G manager user1</code></p><p>2.编辑samba配置文件</p><p><code>vim /etc/samba/smb.conf</code></p><p><code>[staff1]  //共享名称</code></p><p><code>path = /opt/a1  // 共享路径</code></p><p><code>write list = user1 // 允许user1有写入权限</code></p><p><code>read list = user1  //使user1有读写权限</code></p><p><code>valid users = user1  //使user1对staff1有访问权限</code></p><p><img src="https://storage.tonlx.cn/images/2021/image-20210507194239538.png"></p><p>3.用户映射</p><p><code>vim /etc/samba/smb.conf</code>   //进入samba的配置文件</p><p>58 行左右加入</p><p><code>username map = /etc/samba/smbusers</code> 用户映射文件</p><p><code>vim /etc/samba/smbuser</code> //配置用户映射文件，加入以下内容</p><p><code>user1= tony</code></p><p><code>user2 = tom</code></p><p>4.测试登录</p><p><code>yum install samba-client -y  //安装客户端</code></p><p><code>smbclient -L 10.100.100.102 -U tony</code> 查看user1的共享目录</p><h2 id="限制上传文件"><a href="#限制上传文件" class="headerlink" title="限制上传文件"></a>限制上传文件</h2><p><code>vim /etc/samba/smb.conf    //编辑smb配置文件</code></p><p>对需要限制的共享目录加入</p><p><code>veto files = /*.exe/*.bmp/    //用来禁止上传可执行（.exe）及位图（.bmp）文件。</code></p><p><code>veto files = /*root*/    //用来禁止上传包含root关键字的文件或目录。</code></p>]]></content>
       
       
       <categories>
@@ -114,7 +174,7 @@
       <link href="2021/05/09/%E6%8A%80%E8%83%BD%E5%A4%A7%E8%B5%9B/%E4%BA%91%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
       <url>2021/05/09/%E6%8A%80%E8%83%BD%E5%A4%A7%E8%B5%9B/%E4%BA%91%E5%B9%B3%E5%8F%B0%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
       
-        <content type="html"><![CDATA[<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="一、做题顺序"><a href="#一、做题顺序" class="headerlink" title="一、做题顺序"></a>一、做题顺序</h2><p>1、创建外部网络</p><p>2、创建硬盘</p><p>3、创建虚拟主机</p><p>4、连接外部设备（AC）</p><p>5、给所有主机设置对应的IP地址</p><p>6.视频和官方文档</p><p><a href="http://132.232.81.43:8989/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%AE%9E%E8%AE%AD%E5%B9%B3%E5%8F%B0%E7%94%A8%E6%88%B7%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8Cv1.2%20201812.pdf">文档</a></p><p><a href="http://132.232.81.43:8989/video/07-%E7%94%A8%E6%88%B7%E5%AE%89%E8%A3%85%E6%89%8B%E5%86%8C%E8%A7%86%E9%A2%91%E6%93%8D%E4%BD%9C.mp4">视频</a></p>]]></content>
+        <content type="html"><![CDATA[<h2 id=""><a href="#" class="headerlink" title=""></a></h2><h2 id="一、做题顺序"><a href="#一、做题顺序" class="headerlink" title="一、做题顺序"></a>一、做题顺序</h2><p>1、创建外部网络</p><p>2、创建硬盘</p><p>3、创建虚拟主机</p><p>4、连接外部设备（AC）</p><p>5、给所有主机设置对应的IP地址</p><p>6.视频和官方文档</p><p>[文档](<a href="https://storage-cn.github.io/images/2021/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%AE%9E%E8%AE%AD%E5%B9%B3%E5%8F%B0%E7%94%A8%E6%88%B7%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8Cv1.2">https://storage-cn.github.io/images/2021/云服务实训平台用户操作手册v1.2</a> 201812.pdf)</p><p><a href="http://132.232.81.43:8989/video/07-%E7%94%A8%E6%88%B7%E5%AE%89%E8%A3%85%E6%89%8B%E5%86%8C%E8%A7%86%E9%A2%91%E6%93%8D%E4%BD%9C.mp4">视频</a></p>]]></content>
       
       
       <categories>
@@ -344,7 +404,7 @@
       <link href="2021/04/28/Linux/%E6%A6%82%E5%BF%B5/linux%E4%B8%AD%E9%82%A3%E4%BA%9B%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E7%9B%AE%E5%BD%95%E5%8F%8A%E6%96%87%E4%BB%B6/"/>
       <url>2021/04/28/Linux/%E6%A6%82%E5%BF%B5/linux%E4%B8%AD%E9%82%A3%E4%BA%9B%E6%9C%89%E6%84%8F%E6%80%9D%E7%9A%84%E7%9B%AE%E5%BD%95%E5%8F%8A%E6%96%87%E4%BB%B6/</url>
       
-        <content type="html"><![CDATA[<h1 id="linux-中那些有意思的目录及文件"><a href="#linux-中那些有意思的目录及文件" class="headerlink" title="linux 中那些有意思的目录及文件"></a>linux 中那些有意思的目录及文件</h1><p>==文件 #9E9E9E==<br>==目录 #4CAF50==<br>==链接 #03A9F4==</p><table><thead><tr><th>目录</th><th>释义</th></tr></thead><tbody><tr><td>/var/log/==messages #9E9E9E==</td><td>系统日志</td></tr><tr><td>/etc/==localtime #9E9E9E==</td><td>系统时区</td></tr><tr><td>/etc/sysconfig/==clock #9E9E9E==</td><td>硬件时区</td></tr><tr><td>/usr/share/==zoneinfo #4CAF50==</td><td>各地区时区文件，配合系统时区</td></tr><tr><td>/etc/==services #9E9E9E==</td><td>服务与端口的关系，通常可以修改或是参考</td></tr><tr><td>/etc/==shells #9E9E9E==</td><td>系统中的shell</td></tr><tr><td>/etc/rc.d/==rc.local #9E9E9E==</td><td>开机加载的且执行的文档</td></tr><tr><td>/etc/rc.d/==init.d #4CAF50==</td><td>类似Windows注册表，给系统提供服务调用</td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></tbody></table>]]></content>
+        <content type="html"><![CDATA[<h1 id="linux-中那些有意思的目录及文件"><a href="#linux-中那些有意思的目录及文件" class="headerlink" title="linux 中那些有意思的目录及文件"></a>linux 中那些有意思的目录及文件</h1><p>文件<br>目录<br>链接</p><table><thead><tr><th>目录</th><th>释义</th></tr></thead><tbody><tr><td>/var/log/==messages</td><td>系统日志</td></tr><tr><td>/etc/==localtime</td><td>系统时区</td></tr><tr><td>/etc/sysconfig/==clock</td><td>硬件时区</td></tr><tr><td>/usr/share/==zoneinfo</td><td>各地区时区文件，配合系统时区</td></tr><tr><td>/etc/==services</td><td>服务与端口的关系，通常可以修改或是参考</td></tr><tr><td>/etc/==shells</td><td>系统中的shell</td></tr><tr><td>/etc/rc.d/==rc.local</td><td>开机加载的且执行的文档</td></tr><tr><td>/etc/rc.d/==init.d</td><td>类似Windows注册表，给系统提供服务调用</td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></tbody></table>]]></content>
       
       
       <categories>
