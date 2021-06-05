@@ -4,6 +4,347 @@
   
     
     <entry>
+      <title>archLinux bios方式安装</title>
+      <link href="2021/06/05/Linux/%E6%8A%98%E8%85%BE/archLinux%20bios%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85/"/>
+      <url>2021/06/05/Linux/%E6%8A%98%E8%85%BE/archLinux%20bios%E6%96%B9%E5%BC%8F%E5%AE%89%E8%A3%85/</url>
+      
+        <content type="html"><![CDATA[<h2 id="更新系统时间"><a href="#更新系统时间" class="headerlink" title="更新系统时间"></a>更新系统时间</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> timedatectl set-ntp <span class="literal">true</span></span></span><br></pre></td></tr></table></figure><h2 id="分配磁盘"><a href="#分配磁盘" class="headerlink" title="分配磁盘"></a>分配磁盘</h2><p>lsblk 查看磁盘<br><img src="./images/1622884834496.png" alt="enter description here"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 折腾 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 折腾 </tag>
+            
+            <tag> arch </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux有关的网站</title>
+      <link href="2021/06/01/Linux/%E6%8A%98%E8%85%BE/Linux%E6%9C%89%E5%85%B3%E7%9A%84%E7%BD%91%E7%AB%99/"/>
+      <url>2021/06/01/Linux/%E6%8A%98%E8%85%BE/Linux%E6%9C%89%E5%85%B3%E7%9A%84%E7%BD%91%E7%AB%99/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、wiki类"><a href="#一、wiki类" class="headerlink" title="一、wiki类"></a>一、wiki类</h2><table><thead><tr><th>网站</th><th>备注</th></tr></thead><tbody><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></tbody></table><h2 id="二、工具帮助"><a href="#二、工具帮助" class="headerlink" title="二、工具帮助"></a>二、工具帮助</h2><table><thead><tr><th>网站</th><th>备注</th></tr></thead><tbody><tr><td><a href="https://dz.wubidz.cn/">https://dz.wubidz.cn/</a></td><td>打字练习</td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr><tr><td></td><td></td></tr></tbody></table>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 折腾 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 折腾 </tag>
+            
+            <tag> 学习 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Linux包管理</title>
+      <link href="2021/06/01/Linux/%E6%8A%98%E8%85%BE/Linux%E5%8C%85%E7%AE%A1%E7%90%86/"/>
+      <url>2021/06/01/Linux/%E6%8A%98%E8%85%BE/Linux%E5%8C%85%E7%AE%A1%E7%90%86/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Linux包管理器"><a href="#Linux包管理器" class="headerlink" title="Linux包管理器"></a>Linux包管理器</h1><p>成为一个 Linux 高手的一个标志是了解主要的 Linux 发行版如何处理包</p><h2 id="一、Linux应用沙盒"><a href="#一、Linux应用沙盒" class="headerlink" title="一、Linux应用沙盒"></a>一、Linux应用沙盒</h2><h3 id="1-Flatpak"><a href="#1-Flatpak" class="headerlink" title="1.Flatpak"></a>1.Flatpak</h3><h3 id="2-snap"><a href="#2-snap" class="headerlink" title="2.snap"></a>2.snap</h3><h3 id="3-AppImage"><a href="#3-AppImage" class="headerlink" title="3.AppImage"></a>3.AppImage</h3><p>实际上applmage不是应用沙盒，没有安装和卸载这一说法，直接使用.AppImage程序。给予执行权限，然后直接运行！ 无需安装。</p><h2 id="二、pacman"><a href="#二、pacman" class="headerlink" title="二、pacman"></a>二、pacman</h2><p>pacman<br>pamac<br>makepkg</p><p>卸载aur方式安装的软件<br>sudo pacman -Qm //查找通过aur方式安装的软件<br>sudo pacman -Rsn //卸载软件</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 折腾 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 折腾 </tag>
+            
+            <tag> manjaro </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>manjaro中我出现的问题</title>
+      <link href="2021/05/31/Linux/%E6%8A%98%E8%85%BE/manjaro%E4%B8%AD%E6%88%91%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+      <url>2021/05/31/Linux/%E6%8A%98%E8%85%BE/manjaro%E4%B8%AD%E6%88%91%E5%87%BA%E7%8E%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 折腾 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 折腾 </tag>
+            
+            <tag> manjaro </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>manjaro中命令与热键</title>
+      <link href="2021/05/31/Linux/%E6%8A%98%E8%85%BE/manjaro%E4%B8%AD%E5%91%BD%E4%BB%A4%E4%B8%8E%E7%83%AD%E9%94%AE/"/>
+      <url>2021/05/31/Linux/%E6%8A%98%E8%85%BE/manjaro%E4%B8%AD%E5%91%BD%E4%BB%A4%E4%B8%8E%E7%83%AD%E9%94%AE/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 折腾 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 折腾 </tag>
+            
+            <tag> manjaro </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>manjaro其它的配置</title>
+      <link href="2021/05/31/Linux/%E6%8A%98%E8%85%BE/manjaro%E5%85%B6%E5%AE%83%E7%9A%84%E9%85%8D%E7%BD%AE/"/>
+      <url>2021/05/31/Linux/%E6%8A%98%E8%85%BE/manjaro%E5%85%B6%E5%AE%83%E7%9A%84%E9%85%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<h2 id="修改家目录为英文"><a href="#修改家目录为英文" class="headerlink" title="修改家目录为英文"></a>修改家目录为英文</h2><p>1.修改家目录环境变量</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~<span class="regexp">/.config/u</span>ser-dirs.dirs</span><br></pre></td></tr></table></figure><p>修改为以下内容</p><figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">XDG_DESKTOP_DIR=<span class="string">&quot;$HOME/Desktop&quot;</span></span><br><span class="line">XDG_DOWNLOAD_DIR=<span class="string">&quot;$HOME/Download&quot;</span></span><br><span class="line">XDG_TEMPLATES_DIR=<span class="string">&quot;$HOME/Templates&quot;</span></span><br><span class="line">XDG_PUBLICSHARE_DIR=<span class="string">&quot;$HOME/Public&quot;</span></span><br><span class="line">XDG_DOCUMENTS_DIR=<span class="string">&quot;$HOME/Documents&quot;</span></span><br><span class="line">XDG_MUSIC_DIR=<span class="string">&quot;$HOME/Music&quot;</span></span><br><span class="line">XDG_PICTURES_DIR=<span class="string">&quot;$HOME/Pictures&quot;</span></span><br><span class="line">XDG_VIDEOS_DIR=<span class="string">&quot;$HOME/Videos&quot;</span></span><br></pre></td></tr></table></figure><p>2.修改家目录中的中文名</p><figure class="highlight cos"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line"><span class="keyword">mv</span> 公共 Public</span><br><span class="line"><span class="keyword">mv</span> 模板 Templates</span><br><span class="line"><span class="keyword">mv</span> 视频 Videos</span><br><span class="line"><span class="keyword">mv</span> 图片 Pictures</span><br><span class="line"><span class="keyword">mv</span> 文档 Documents</span><br><span class="line"><span class="keyword">mv</span> 下载 Download</span><br><span class="line"><span class="keyword">mv</span> 音乐 Music</span><br><span class="line"><span class="keyword">mv</span> 桌面 Desktop</span><br></pre></td></tr></table></figure><h2 id="配置v2ray"><a href="#配置v2ray" class="headerlink" title="配置v2ray"></a>配置v2ray</h2><p><img src="https://storage-cn.github.io/images/2021/20210603124748.png"><br>一、v2ray安装</p><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">yay</span> -S v2raya</span><br></pre></td></tr></table></figure><p>二、v2ray-core安装</p><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">curl -O http<span class="variable">s:</span>//cdn.jsdelivr.net/gh/v2rayA/v2rayA@master/install/<span class="keyword">go</span>.<span class="keyword">sh</span> #从 jsdelivr 安装 v2ray-core </span><br><span class="line">sudo bash <span class="keyword">go</span>.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure><p>三、启动v2ray</p><figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo<span class="keyword"> system</span>ctl start v2raya <span class="comment">#启动</span></span><br><span class="line">sudo<span class="keyword"> system</span>ctl stop v2raya  <span class="comment"># 关闭</span></span><br><span class="line">sudo<span class="keyword"> system</span>ctl enable v2raya <span class="comment">#开机自启动</span></span><br><span class="line">sudo<span class="keyword"> system</span>ctl disable v2raya <span class="comment">#开机不启动</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 折腾 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 折腾 </tag>
+            
+            <tag> manjaro </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>manjaro i3WM配置</title>
+      <link href="2021/05/31/Linux/%E6%8A%98%E8%85%BE/manjaro%20i3WM%E9%85%8D%E7%BD%AE/"/>
+      <url>2021/05/31/Linux/%E6%8A%98%E8%85%BE/manjaro%20i3WM%E9%85%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 折腾 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 折腾 </tag>
+            
+            <tag> manjaro </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>我在manjaro下使用的软件</title>
+      <link href="2021/05/31/Linux/%E6%8A%98%E8%85%BE/%E6%88%91%E7%94%A8%E7%9A%84manjaro%E8%BD%AF%E4%BB%B6/"/>
+      <url>2021/05/31/Linux/%E6%8A%98%E8%85%BE/%E6%88%91%E7%94%A8%E7%9A%84manjaro%E8%BD%AF%E4%BB%B6/</url>
+      
+        <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>循序渐进收集Linux下好用的软件，学习它并替代Windows下的各类软件</p><h1 id="GUI-总览"><a href="#GUI-总览" class="headerlink" title="GUI 总览"></a>GUI 总览</h1><table><thead><tr><th>软件名称</th><th>类别</th><th>安装方式</th><th>备注</th></tr></thead><tbody><tr><td><strong>视频图片类</strong></td><td></td><td></td><td></td></tr><tr><td>kdenlive</td><td>视频处理</td><td>pacman</td><td>视频剪辑软件</td></tr><tr><td>gimp</td><td>图片处理</td><td>pacman</td><td>Linux下的PS</td></tr><tr><td>flameshot</td><td>截图工具</td><td>pacman</td><td>Linux下非常强大的截图工具</td></tr><tr><td>vokoscreen</td><td>视频录制</td><td>pacman</td><td>优秀的录屏软件</td></tr><tr><td>nomacs</td><td>图片查看工具</td><td>pacman</td><td>可以对图片进行简单编辑</td></tr><tr><td>vlc</td><td>视频查看工具</td><td>pacman</td><td>查看视频</td></tr><tr><td>picgo</td><td>图片上传</td><td><a href="https://aur.archlinux.org/packages/picgo/">aur</a></td><td>作图床配合markdown</td></tr><tr><td><strong>办公学习类</strong></td><td></td><td></td><td></td></tr><tr><td>gnome-shell-pomodoro</td><td>时间管理</td><td><a href="https://aur.archlinux.org/packages/gnome-shell-pomodoro/">aur</a></td><td>番茄钟</td></tr><tr><td>小书匠</td><td>markdown</td><td><a href="https://github.com/suziwen/markdownxiaoshujiang/releases">http</a></td><td>markdown笔记软件</td></tr><tr><td>typora</td><td>markdown</td><td>pacman</td><td>markdown笔记软件，比较火</td></tr><tr><td>edrawmax-cn</td><td>流程图</td><td><a href="https://aur.archlinux.org/packages/edrawmax-cn/">aur</a></td><td>”亿图图示“类似visio</td></tr><tr><td>thunderbird</td><td>通讯邮箱</td><td>pacman</td><td>“雷鸟” 邮箱</td></tr><tr><td>teamviewer</td><td>远程控制</td><td>pacman</td><td>全平台通用</td></tr><tr><td>telegram</td><td>通讯交流</td><td><a href="https://aur.archlinux.org/64gram-desktop.git">aur</a></td><td>telegram</td></tr><tr><td><strong>小工具</strong></td><td></td><td></td><td></td></tr><tr><td>utools</td><td>工具集</td><td>aur</td><td>工具及搜索</td></tr><tr><td>v2raya</td><td>代理</td><td>aur</td><td>支持多种协议，需要安装v2ray-core</td></tr><tr><td>etcher</td><td>U盘制作</td><td>aur</td><td>好用的U盘制作工具</td></tr><tr><td>gparted</td><td>分区软件</td><td>pacman</td><td>分区工具</td></tr><tr><td>xunlei-bin</td><td>下载工具</td><td>aur</td><td>迅雷</td></tr><tr><td>freedownloadmanager</td><td>下载工具</td><td>pacman</td><td>FDM</td></tr><tr><td>baidunetdisk-bin</td><td>网盘</td><td>aur</td><td>百度云网盘</td></tr><tr><td>checkra1n-cli</td><td>苹果越狱</td><td>aur</td><td>苹果越狱软件</td></tr><tr><td>remmina</td><td>RDP连接工具</td><td>pacman</td><td>需要下载freerdp插件</td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td><strong>影音娱乐</strong></td><td></td><td></td><td></td></tr><tr><td>netease-cloud-music</td><td>音乐</td><td>pacman</td><td>网易云音乐</td></tr><tr><td>electron-netease-cloud-music</td><td>音乐</td><td>pacman</td><td>非官方网易云音乐</td></tr></tbody></table><h1 id="CLI-总览"><a href="#CLI-总览" class="headerlink" title="CLI 总览"></a>CLI 总览</h1><table><thead><tr><th>软件名称</th><th>类别</th><th>安装方式</th><th>备注</th></tr></thead><tbody><tr><td><strong>系统必备</strong></td><td></td><td></td><td></td></tr><tr><td>dhcpcd</td><td></td><td></td><td></td></tr><tr><td>man-pages-zh_cn man-pages-zh_tw</td><td>中文man</td><td>pacman</td><td>这是两个包，都要安装</td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td></tr></tbody></table><h2 id="一、小工具"><a href="#一、小工具" class="headerlink" title="一、小工具"></a>一、小工具</h2><h2 id="二、视频图片"><a href="#二、视频图片" class="headerlink" title="二、视频图片"></a>二、视频图片</h2><p>1.kdenlive 视频剪辑软件，<a href="https://kdenlive.org/zh/features-zh/">官网链接</a><br>软件名称:kdenlive<br>安装方法:</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo pacman -S kdenlive</span></span><br></pre></td></tr></table></figure><p>2.图片编辑软件，<a href="https://www.gimp.org/">官网链接</a><br>软件名称:gimp<br>安装方法:</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo pacman -S gimp</span></span><br></pre></td></tr></table></figure><h2 id="三、开发设计"><a href="#三、开发设计" class="headerlink" title="三、开发设计"></a>三、开发设计</h2><h2 id="四、办公学习"><a href="#四、办公学习" class="headerlink" title="四、办公学习"></a>四、办公学习</h2><h2 id="五、影音娱乐"><a href="#五、影音娱乐" class="headerlink" title="五、影音娱乐"></a>五、影音娱乐</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 折腾 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 折腾 </tag>
+            
+            <tag> manjaro </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>manjaro系统安装</title>
+      <link href="2021/05/31/Linux/%E6%8A%98%E8%85%BE/manjaro%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/"/>
+      <url>2021/05/31/Linux/%E6%8A%98%E8%85%BE/manjaro%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85/</url>
+      
+        <content type="html"><![CDATA[<p>这里我是用的桌面版本是xfce，我喜欢它的风格</p><h2 id="一、更换源"><a href="#一、更换源" class="headerlink" title="一、更换源"></a>一、更换源</h2><p>1.更换pacman的源为国内源</p><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman-mirrors -<span class="selector-tag">i</span> -c China -m rank</span><br></pre></td></tr></table></figure><p><img src="https://storage-cn.github.io/images/2021/20210531150413.png"></p><p>2.同步刷新本地软件数据库</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo pacman -Syy</span></span><br></pre></td></tr></table></figure><p>3.如果你使用的vm虚拟机你可能需要安装一下vm-tools</p><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">克隆安装脚本</span><br><span class="line">git clone http<span class="variable">s:</span>//github.<span class="keyword">com</span>/rasa/vmware-tools-patches.git</span><br><span class="line">进入目录</span><br><span class="line"><span class="keyword">cd</span> vmware-tools-patches</span><br><span class="line">执行安装脚本</span><br><span class="line">sudo ./patched-<span class="keyword">open</span>-<span class="keyword">vm</span>-tools.<span class="keyword">sh</span></span><br></pre></td></tr></table></figure><p>4.添加archlinux ARU源<br>vim /etc/pacman.conf</p><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">[archlinuxcn]</span></span><br><span class="line"><span class="attr">SigLevel</span> = Optional TrustedOnly</span><br><span class="line"><span class="attr">Server</span> = https://mirrors.ustc.edu.cn/archlinuxcn/<span class="variable">$arch</span></span><br></pre></td></tr></table></figure><p>5.安装yay</p><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo pacman -S yay</span></span><br></pre></td></tr></table></figure><p>6.安装密钥</p><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pacman -Syy &amp;&amp; sudo pacman -S archlinuxcn-keyring</span><br></pre></td></tr></table></figure><h2 id="二、安装必备软件"><a href="#二、安装必备软件" class="headerlink" title="二、安装必备软件"></a>二、安装必备软件</h2><h3 id="安装输入法"><a href="#安装输入法" class="headerlink" title="安装输入法"></a>安装输入法</h3><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo</span> pacman -S fcitx-im    <span class="comment">#默认全部安装</span></span><br><span class="line"> sudo pacman -S fcitx-configtool</span><br><span class="line"> sudo pacman -S fcitx-sogoupinyin <span class="comment">#如果用不了pacman，试试yay</span></span><br><span class="line"> sudo pacman -S fcitx-googlepinyin <span class="comment">#也可以安装google输入法</span></span><br></pre></td></tr></table></figure><p> 新建~/.xprofile文件，加入如下内容</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> <span class="built_in">export</span> GTK_IM_MODULE=fcitx</span><br><span class="line"><span class="built_in">export</span> QT_IM_MODULE=fcitx</span><br><span class="line"><span class="built_in">export</span> XMODIFIERS=<span class="string">&quot;@im=fcitx&quot;</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 折腾 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 折腾 </tag>
+            
+            <tag> manjaro </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>manjaro版本介绍</title>
+      <link href="2021/05/31/Linux/%E6%8A%98%E8%85%BE/manjaro%E7%89%88%E6%9C%AC%E4%BB%8B%E7%BB%8D/"/>
+      <url>2021/05/31/Linux/%E6%8A%98%E8%85%BE/manjaro%E7%89%88%E6%9C%AC%E4%BB%8B%E7%BB%8D/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 折腾 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 折腾 </tag>
+            
+            <tag> manjaro </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>manjaro全套使用指南</title>
+      <link href="2021/05/30/Linux/%E6%8A%98%E8%85%BE/manjaro%E4%BB%8E%E9%9B%B6%E9%85%8D%E7%BD%AE/"/>
+      <url>2021/05/30/Linux/%E6%8A%98%E8%85%BE/manjaro%E4%BB%8E%E9%9B%B6%E9%85%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<p>[toc]</p><h1 id="manjaro从零配置"><a href="#manjaro从零配置" class="headerlink" title="manjaro从零配置"></a>manjaro从零配置</h1><h2 id="1、版本介绍"><a href="#1、版本介绍" class="headerlink" title="1、版本介绍"></a>1、版本介绍</h2><h2 id="2、安装系统"><a href="#2、安装系统" class="headerlink" title="2、安装系统"></a>2、安装系统</h2><h2 id="3、安装软件"><a href="#3、安装软件" class="headerlink" title="3、安装软件"></a>3、安装软件</h2><h2 id="4、i3wm配置"><a href="#4、i3wm配置" class="headerlink" title="4、i3wm配置"></a>4、i3wm配置</h2><h2 id="5、其它配置"><a href="#5、其它配置" class="headerlink" title="5、其它配置"></a>5、其它配置</h2><h2 id="6、命令与热键"><a href="#6、命令与热键" class="headerlink" title="6、命令与热键"></a>6、命令与热键</h2><h2 id="7、出现过的问题"><a href="#7、出现过的问题" class="headerlink" title="7、出现过的问题"></a>7、出现过的问题</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> Linux </category>
+          
+          <category> 折腾 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> 折腾 </tag>
+            
+            <tag> manjaro </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Linux替代Windows</title>
       <link href="2021/05/25/Linux/%E6%8A%98%E8%85%BE/Linux%E5%A6%82%E4%BD%95%E6%9B%BF%E4%BB%A3Windows/"/>
       <url>2021/05/25/Linux/%E6%8A%98%E8%85%BE/Linux%E5%A6%82%E4%BD%95%E6%9B%BF%E4%BB%A3Windows/</url>
